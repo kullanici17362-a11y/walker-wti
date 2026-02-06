@@ -1,0 +1,95 @@
+/* RESET */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Inter, system-ui, Arial, sans-serif;
+  }
+  
+  /* ARKAPLAN */
+  body {
+    min-height: 100vh;
+    background:
+      linear-gradient(rgba(0,0,0,.85), rgba(0,0,0,.95)),
+      url("/matrix-bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+    color: #d1fae5;
+    padding: 40px;
+  }
+  
+  /* ANA KUTU */
+  .admin-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(2, 6, 23, 0.85);
+    backdrop-filter: blur(12px);
+    border-radius: 18px;
+    padding: 32px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.7);
+    border: 1px solid rgba(34,197,94,.25);
+  }
+  
+  /* BAŞLIK */
+  .admin-container h1 {
+    text-align: center;
+    margin-bottom: 32px;
+    letter-spacing: 3px;
+    color: #22c55e;
+  }
+  
+  /* BÖLÜM BAŞLIKLARI */
+  .section {
+    margin-bottom: 40px;
+  }
+  
+  .section h2 {
+    margin-bottom: 16px;
+    color: #86efac;
+    border-left: 4px solid #22c55e;
+    padding-left: 12px;
+    font-size: 20px;
+  }
+  
+  /* TABLO */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(2, 6, 23, 0.6);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  thead {
+    background: rgba(34,197,94,.15);
+  }
+  
+  th {
+    text-align: left;
+    padding: 14px;
+    font-size: 14px;
+    color: #22c55e;
+  }
+  
+  td {
+    padding: 14px;
+    border-bottom: 1px solid rgba(34,197,94,.15);
+    font-size: 14px;
+  }
+  
+  tbody tr:hover {
+    background: rgba(34,197,94,.08);
+  }
+  
+  /* TARİH KOLONU */
+  td.time {
+    color: #9ca3af;
+    font-size: 12px;
+  }
+  
+  /* BOŞ DURUM */
+  .empty {
+    text-align: center;
+    padding: 24px;
+    color: #6b7280;
+    font-size: 14px;
+  }

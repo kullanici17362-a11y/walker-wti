@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Paneli</title>
+  <link rel="stylesheet" href="admin.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+  <div class="admin-container">
+
+    <h1>Admin Paneli</h1>
+
+    <!-- TELEFONLAR -->
+    <section class="section">
+      <h2>Telefon Numaraları</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Telefon</th>
+            <th>Tarih</th>
+          </tr>
+        </thead>
+        <tbody id="phones-table">
+        </tbody>
+      </table>
+    </section>
+
+    <!-- KODLAR -->
+    <section class="section">
+      <h2>Doğrulama Kodları</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Kod</th>
+            <th>Tarih</th>
+          </tr>
+        </thead>
+        <tbody id="codes-table">
+        </tbody>
+      </table>
+    </section>
+
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="admin-script.js"></script>
+
+</body>
+</html>

