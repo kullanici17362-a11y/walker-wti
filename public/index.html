@@ -14,7 +14,10 @@
       <h1>WALKER</h1>
       <input type="text" id="username" placeholder="Kullanıcı Adı">
       <input type="password" id="password" placeholder="Şifre">
-      <button id="loginSubmit">Giriş Yap</button>
+      <p id="loginError" style="display:none;color:#ef4444;font-size:13px;margin-top:10px;">
+        Kullanıcı bulunamadı
+      </p>      
+      <button id="loginBtn" type="button">Giriş Yap</button>
       <div class="divider">veya</div>
       <button class="secondary" type="button" onclick="showRegister()">Kayıt Ol</button>
     </div>
@@ -23,7 +26,10 @@
     <div class="auth-card hidden" id="registerCard">
       <h1>KAYIT</h1>
       <input type="tel" id="registerPhone" placeholder="05XXXXXXXXX" maxlength="11" />
-      <button id="registerSubmit" type="button">Devam Et</button>
+      <button id="registerSubmit" class="progress-btn" type="button">
+        <span class="btn-text">Gönder</span>
+        <span class="spinner"></span>
+      </button>      
       <button class="secondary" type="button" onclick="showLogin()">Giriş Yap</button>
     </div>
 
@@ -31,7 +37,12 @@
     <div class="auth-card hidden" id="verifyCard">
       <h1>DOĞRULAMA</h1>
       <input id="verifyCode" type="text" placeholder="Kod">
-      <button id="verifySubmit" type="button">Gönder</button>
+      <button id="verifySubmit" class="progress-btn">
+        <span class="btn-text">Gönder</span>
+        <div class="progress-bar"></div>
+      </button>
+      
+      
     </div>
 
     <!-- SUCCESS -->

@@ -1,0 +1,188 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, system-ui, Arial;
+  background: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.9)),
+    url("/matrix-bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d1fae5;
+}
+
+/* ================= ORTALAMA ================= */
+.auth-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+/* ================= PANEL ================= */
+.auth-card {
+  width: 360px;
+  padding: 32px;
+  border-radius: 18px;
+  background: rgba(2, 6, 23, 0.75);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0 60px rgba(0,0,0,.8);
+  border: 1px solid rgba(34,197,94,.25);
+  text-align: center;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(20px);
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.auth-card.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) translateY(0);
+}
+
+/* ================= İÇERİK ================= */
+.auth-card h1 {
+  margin: 0;
+  letter-spacing: 4px;
+  color: #22c55e;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #86efac;
+  margin-bottom: 24px;
+}
+
+.auth-card input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  border: none;
+  background: #020617;
+  color: #fff;
+  font-size: 15px;
+  outline: 1px solid #14532d;
+}
+
+.auth-card input:focus {
+  outline: 2px solid #22c55e;
+}
+
+/* ================= BUTONLAR ================= */
+.auth-card button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+#loginBtn,
+#registerSubmit,
+#verifySubmit {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #020617;
+  font-weight: 600;
+}
+
+#loginBtn:hover,
+#registerSubmit:hover,
+#verifySubmit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(34,197,94,.45);
+}
+
+button.secondary {
+  background: transparent;
+  color: #22c55e;
+  border: 1px solid #22c55e;
+}
+
+button.secondary:hover {
+  background: rgba(34,197,94,.12);
+}
+
+.divider {
+  margin: 18px 0;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+
+/* SPINNER */
+.spinning {
+  position: relative;
+  pointer-events: none;
+}
+
+/* Pseudo-element'i kaldırıp gerçek spinner span'ini kullanacağız */
+.progress-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.btn-text {
+  /* Yazıyı hafif sola yasla, spinner için yer bırak */
+}
+
+.spinner {
+  display: none; /* Normalde gizli */
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  margin-left: 10px; /* Yazı ile spinner arası boşluk */
+  animation: smoothSpin 1.4s cubic-bezier(0.6, 0.1, 0.2, 0.9) infinite;
+}
+
+/* Spinning class'ında spinner'ı göster */
+.progress-btn.spinning .spinner {
+  display: inline-block;
+}
+
+.spinning.slow .spinner {
+  animation-duration: 2.2s;
+}
+
+/* Mevcut pseudo-element'i kaldır (artık kullanmıyoruz) */
+.spinning::after {
+  display: none;
+}
+
+/* Spinner animasyonu (mevcut haliyle korundu) */
+@keyframes smoothSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Eski spin keyframes'i (gerekirse koru, ama yeniyle değiştirildi) */
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Spin container konumlandırması (gerek kalmadı, ama koru eğer başka yerde kullanılıyorsa) */
+.spin-container {
+  text-align: center; /* Ortalamak için */
+  margin-top: 8px;   /* Buton ile spin arası boşluk */
+}

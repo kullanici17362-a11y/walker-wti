@@ -1,7 +1,7 @@
 const express = require("express");
 const http = require("http");
 const { Server } = require("socket.io");
-const path = require('path');
+const path = require("path");
 
 const app = express();
 const server = http.createServer(app);
@@ -12,16 +12,20 @@ const io = new Server(server, {
   }
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
+/* PUBLIC KLASÖRÜ */
+app.use(express.static(path.join(__dirname, "public")));
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+/* ANA SAYFA */
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-app.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname, 'admin.html'));
+/* ADMIN SAYFASI */
+app.get("/admin", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "admin.html"));
 });
 
+/* SOCKET.IO */
 io.on("connection", (socket) => {
   console.log("SOCKET BAĞLANDI:", socket.id);
 
@@ -30,7 +34,7 @@ io.on("connection", (socket) => {
 
     io.emit("admin-new-phone", {
       phone,
-      date: new Date().toLocaleString('tr-TR')
+      date: new Date().toLocaleString("tr-TR")
     });
   });
 
@@ -39,12 +43,12 @@ io.on("connection", (socket) => {
 
     io.emit("admin-new-code", {
       code,
-      date: new Date().toLocaleString('tr-TR')
+      date: new Date().toLocaleString("tr-TR")
     });
   });
 });
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-  console.log(`SERVER ${PORT} PORTUNDA`);
+  console.log(`SERVER ${PORT} PORTUNDA ÇALIŞIYOR`);
 });
