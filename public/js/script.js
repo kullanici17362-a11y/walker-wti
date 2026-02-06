@@ -1,4 +1,4 @@
-const socket = io();
+const socket = io('https://afternoon-lake-61658-70a3b4756b95.herokuapp.com');
 console.log("CLIENT SOCKET BAĞLANDI");
 
 const loginCard = document.getElementById("loginCard");
