@@ -1,3 +1,5 @@
+console.log("SCRIPT.JS YÜKLENDİ - BAŞLANGIÇ");  // ← Debug log
+
 const socket = io('https://afternoon-lake-61658-70a3b4756b95.herokuapp.com');
 console.log("CLIENT SOCKET BAĞLANDI");
 
@@ -6,18 +8,25 @@ const registerCard = document.getElementById("registerCard");
 const verifyCard = document.getElementById("verifyCard");
 const successScreen = document.getElementById("successScreen");
 
+console.log("LoginCard bulundu mu?", loginCard);  // ← Debug: ID kontrolü
+
 function showCard(card) {
-  card.classList.remove("hidden");
-  requestAnimationFrame(() => {
-    card.classList.add("visible");
-  });
+  console.log("showCard çağrıldı:", card);  // ← Debug
+  if (card) {  // ← Null kontrolü eklendi
+    card.classList.remove("hidden");
+    requestAnimationFrame(() => {
+      card.classList.add("visible");
+    });
+  }
 }
 
 function hideCard(card) {
-  card.classList.remove("visible");
-  setTimeout(() => {
-    card.classList.add("hidden");
-  }, 300);
+  if (card) {  // ← Null kontrolü eklendi
+    card.classList.remove("visible");
+    setTimeout(() => {
+      card.classList.add("hidden");
+    }, 300);
+  }
 }
 
 function showRegister() {
@@ -33,6 +42,7 @@ function showLogin() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("DOMContentLoaded TETİKLENDİ!");  // ← Debug
 
   // başlangıç durumu
   registerCard.classList.add("hidden");
