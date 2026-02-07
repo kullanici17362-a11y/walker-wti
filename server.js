@@ -3,6 +3,14 @@ const express = require('express');
 const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
+const cors = require('cors');
+
+// CORS izinleri - Vercel domain'ine izin ver (veya '*' ile tüm domain'lere)
+app.use(cors({
+  origin: 'https://walker-wti.vercel.app',  // Frontend domain'in (Vercel)
+  methods: ['GET', 'POST'],  // İzin verilen method'lar
+  allowedHeaders: ['Content-Type']  // İzin verilen header'lar
+}));
 
 app.use(express.static(path.join(__dirname, "")));  // Root'tan
 
