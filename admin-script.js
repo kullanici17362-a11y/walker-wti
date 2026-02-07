@@ -1,8 +1,6 @@
-const socket = io();
-console.log("ADMIN SOCKET YÜKLENDİ");
+console.log("ADMIN SCRIPT YÜKLENDİ");
 
-const phoneTable = document.getElementById("phones-table");
-const codeTable = document.getElementById("codes-table");
+const socket = io();  // Backend'e bağlan (local veya Heroku URL'si, frontend gibi)
 
 socket.on("connect", () => {
   console.log("ADMIN SOCKET CONNECTED:", socket.id);
