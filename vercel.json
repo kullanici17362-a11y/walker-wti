@@ -1,15 +1,13 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    }
-  ],
   "routes": [
     {
+      "src": "/(styles.css|script.js|matrix-bg.jpg|code.mp3|phone.mp3)", 
+      "dest":"/$1" 
+    },
+    {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/index.html" 
     }
   ]
 }
