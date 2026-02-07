@@ -13,16 +13,19 @@ const io = new Server(server, {
 });
 
 /* PUBLIC KLASÖRÜ */
-app.use(express.static(path.join(__dirname, "public")));
+
+app.use(express.static(path.join(__dirname, "")));  // "" ile root'tan serve et (public kaldır)
 
 /* ANA SAYFA */
+
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(__dirname, "", "index.html"));  // Root'tan index.html
 });
 
 /* ADMIN SAYFASI */
+
 app.get("/admin", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "admin.html"));
+  res.sendFile(path.join(__dirname, "", "admin.html"));  // Root'tan admin.html
 });
 
 /* SOCKET.IO */
