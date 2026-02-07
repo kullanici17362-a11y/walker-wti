@@ -1,6 +1,6 @@
 console.log("SCRIPT.JS YÜKLENDİ - BAŞLANGIÇ");  // Debug: Script yüklendi mi?
 
-const socket = io('https://afternoon-lake-61658-70a3b4756b95.herokuapp.com');
+const socket = io('https://afternoon-lake-61658-70a3b4756b95.herokuapp.com/socket.io/socket.io.js');
 console.log("CLIENT SOCKET BAĞLANDI");
 
 const loginCard = document.getElementById("loginCard");
