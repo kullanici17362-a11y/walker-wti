@@ -2,7 +2,7 @@
   "version": 2,
   "routes": [
     {
-      "src": "/(styles.css|script.js|matrix-bg.jpg|code.mp3|phone.mp3)", 
+      "src": "/(styles.css|script.js|matrix-bg.jpg|admin-script.js|admin.css|code.mp3|phone.mp3|admin.html|server.js)", 
       "dest":"/$1" 
     },
     {
