@@ -1,8 +1,5 @@
 console.log("SCRIPT.JS YÜKLENDİ - BAŞLANGIÇ");  // Debug: Script yüklendi mi?
 
-const socket = io('https://afternoon-lake-61658-70a3b4756b95.herokuapp.com');
-console.log("CLIENT SOCKET BAĞLANDI");
-
 function showCard(card) {
   console.log("showCard çağrıldı:", card);  // Debug
   if (card) {
@@ -54,6 +51,14 @@ document.addEventListener("DOMContentLoaded", () => {
   if (verifyCard) verifyCard.classList.add("hidden");
   if (successScreen) successScreen.classList.add("hidden");
   if (loginCard) showCard(loginCard);
+
+  // Socket bağlantısını buraya taşıdım - DOM yüklendikten sonra bağlan, io is not defined hatasını giderir
+  if (typeof io !== 'undefined') {
+    const socket = io('https://afternoon-lake-61658-70a3b4756b95.herokuapp.com');
+    console.log("CLIENT SOCKET BAĞLANDI");
+  } else {
+    console.log("io hatası: Socket.io client yüklenmedi");
+  }
 
   // TELEFON INPUT
   const phoneInput = document.getElementById("registerPhone");
