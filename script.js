@@ -1,10 +1,10 @@
-console.log("SCRIPT.JS YÜKLENDİ - BAŞLANGIÇ");
+console.log("SCRIPT.JS YÜKLENDİ - BAŞLANGIÇ");  // Debug: Script yüklendi mi?
 
 const socket = io('https://afternoon-lake-61658-70a3b4756b95.herokuapp.com');
 console.log("CLIENT SOCKET BAĞLANDI");
 
 function showCard(card) {
-  console.log("showCard çağrıldı:", card);
+  console.log("showCard çağrıldı:", card);  // Debug
   if (card) {
     card.classList.remove("hidden");
     requestAnimationFrame(() => {
@@ -39,20 +39,21 @@ function showLogin() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("DOMContentLoaded TETİKLENDİ!");
+  console.log("DOMContentLoaded TETİKLENDİ!");  // Debug: Sayfa yüklendi mi?
 
+  // Element tanımlamalarını buraya taşıdım - DOM yüklendikten sonra aranır, null dönmez
   const loginCard = document.getElementById("loginCard");
   const registerCard = document.getElementById("registerCard");
   const verifyCard = document.getElementById("verifyCard");
   const successScreen = document.getElementById("successScreen");
 
-  console.log("LoginCard bulundu mu?", loginCard);
+  console.log("LoginCard bulundu mu?", loginCard);  // Debug: Elementler var mı?
 
   // başlangıç durumu
-  registerCard.classList.add("hidden");
-  verifyCard.classList.add("hidden");
-  successScreen.classList.add("hidden");
-  showCard(loginCard);
+  if (registerCard) registerCard.classList.add("hidden");
+  if (verifyCard) verifyCard.classList.add("hidden");
+  if (successScreen) successScreen.classList.add("hidden");
+  if (loginCard) showCard(loginCard);
 
   // TELEFON INPUT
   const phoneInput = document.getElementById("registerPhone");
@@ -124,17 +125,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 2000);
   });
 
+  // Giriş Yap butonunun tıklanma işlevi
+  const loginBtn = document.getElementById("loginBtn");
+  const loginError = document.getElementById("loginError");
+
+  if (loginBtn) {
+    loginBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      // Kullanıcı hatası mesajını göster
+      loginError.style.display = "block";
+    });
+  }
 });
-
-// Giriş Yap butonunun tıklanma işlevi
-const loginBtn = document.getElementById("loginBtn");
-const loginError = document.getElementById("loginError");
-
-if (loginBtn) {
-  loginBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    // Kullanıcı hatası mesajını göster
-    loginError.style.display = "block";
-  });
-}
