@@ -7,7 +7,7 @@ body {
   min-height: 100vh;
   font-family: Inter, system-ui, Arial;
   background: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.9)),
-    url("matrix-bg.jpg") no-repeat center center fixed; /* Yol düzeltildi: / kaldırıldı, root'tan yükle (eğer public'taysa Vercel ayarını değiştir) */
+    url("/matrix-bg.jpg") no-repeat center center fixed; /* Yol düzeltildi: / kaldırıldı, root'tan yükle (eğer public'taysa Vercel ayarını değiştir) */
   background-size: cover;
   display: flex;
   align-items: center;
