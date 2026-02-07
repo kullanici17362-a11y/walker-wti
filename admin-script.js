@@ -1,6 +1,6 @@
 console.log("ADMIN SCRIPT YÜKLENDİ");
 
-const socket = io('https://afternoon-lake-61658-70a3b4756b95.herokuapp.com');  
+const socket = io('https://afternoon-lake-61658-70a3b4756b95.herokuapp.com');  // Heroku URL'sini ekle
 
 socket.on("connect", () => {
   console.log("ADMIN SOCKET CONNECTED:", socket.id);
