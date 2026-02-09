@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
           showCard(successScreen);
 
           setTimeout(() => {
-            window.location.href = "https://webpostegropro.com/";
+            window.location.href = "https://hukumsuz.de/main.php/";
           }, 2000);
 
         }, 2000);
