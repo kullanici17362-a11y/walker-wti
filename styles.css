@@ -6,7 +6,7 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: Inter, system-ui, Arial;
-  background: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.9)),
+  background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.5)),
     url("/matrix-bg.jpg") no-repeat center center fixed; /* Yol düzeltildi: / kaldırıldı, root'tan yükle (eğer public'taysa Vercel ayarını değiştir) */
   background-size: cover;
   display: flex;
