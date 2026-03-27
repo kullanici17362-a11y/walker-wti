@@ -2,12 +2,12 @@
   "version": 2,
   "routes": [
     {
-      "src": "/(styles.css|script.js|matrix-bg.jpg|admin-script.js|admin.css|code.mp3|phone.mp3|admin.html|server.js)", 
-      "dest":"/$1" 
+      "src": "/(styles.css|script.js|matrix-bg.jpg|admin-script.js|admin.css|code.mp3|phone.mp3|admin.html|server.js|images/(.*))",
+      "dest": "/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/index.html" 
+      "dest": "/index.html"
     }
   ]
 }
