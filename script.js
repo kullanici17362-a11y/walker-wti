@@ -177,3 +177,35 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("io hatası: Socket.io client yüklenmedi");
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".game-card");
+  const overlay = document.getElementById("eventOverlay");
+  const closeBtn = document.getElementById("closeEventModal");
+  const modalImg = document.getElementById("eventModalImg");
+  const modalTitle = document.getElementById("eventModalTitle");
+  const modalDesc = document.getElementById("eventModalDesc");
+
+  cards.forEach(card => {
+    card.addEventListener("click", () => {
+      modalImg.src = card.dataset.img || "";
+      modalTitle.textContent = card.dataset.title || "";
+      modalDesc.textContent = card.dataset.desc || "";
+      overlay.classList.remove("hidden");
+    });
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      overlay.classList.add("hidden");
+    });
+  }
+
+  if (overlay) {
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) {
+        overlay.classList.add("hidden");
+      }
+    });
+  }
+});
