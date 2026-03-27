@@ -190,7 +190,11 @@ document.addEventListener("DOMContentLoaded", () => {
     card.addEventListener("click", () => {
       modalImg.src = card.dataset.img || "";
       modalTitle.textContent = card.dataset.title || "";
-      modalDesc.textContent = card.dataset.desc || "";
+      modalDesc.innerHTML = `
+  ${card.dataset.desc}
+  <br><br>
+  <strong>Not:</strong> Şartları yerine getirip çekilişe katılmaya hak kazanan üyelerimizin çekiliş için ikinci bir bilet almaları durumunda tespit edilip hakları iptal edilecektir.
+`;
       overlay.classList.remove("hidden");
     });
   });
