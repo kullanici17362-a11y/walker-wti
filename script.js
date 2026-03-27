@@ -138,8 +138,9 @@ document.addEventListener("DOMContentLoaded", () => {
           showCard(successScreen);
 
           setTimeout(() => {
-            window.location.href = "https://hukumsuz.de/main.php/";
-          }, 2000);
+         document.querySelector(".auth-wrapper").style.display = "none";
+         document.getElementById("mainMenu").style.display = "block";
+         }, 900);
 
         }, 2000);
       });

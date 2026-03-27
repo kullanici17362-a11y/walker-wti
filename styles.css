@@ -203,3 +203,132 @@ button.secondary:hover {
   text-align: center;
   margin-top: 8px;
 }
+
+/* ================= ANA MENÜ ================= */
+
+.main-menu {
+  position: fixed;
+  inset: 0;
+  background: #020617;
+  color: #f5f3ff;
+  font-family: Inter, system-ui, Arial;
+  overflow-y: auto;
+}
+
+/* ÜST BAR */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: rgba(2,6,23,0.9);
+  border-bottom: 1px solid rgba(168,85,247,.2);
+  color: #c084fc;
+  font-size: 13px;
+}
+
+/* HEADER */
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: #c084fc;
+  text-shadow:
+    0 0 5px #c084fc,
+    0 0 10px #a855f7;
+}
+
+/* ARAMA */
+.search-box {
+  display: flex;
+  gap: 10px;
+}
+
+.search-box input {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #020617;
+  color: white;
+  outline: 1px solid #4c1d95;
+}
+
+.search-box button {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #7c3aed, #c084fc);
+  color: white;
+  cursor: pointer;
+}
+
+/* NAV */
+.main-nav {
+  display: flex;
+  gap: 20px;
+  padding: 10px 20px;
+  border-top: 1px solid rgba(168,85,247,.15);
+  border-bottom: 1px solid rgba(168,85,247,.15);
+}
+
+.main-nav a {
+  color: #d8b4fe;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.main-nav a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 6px #a855f7;
+}
+
+/* HERO */
+.hero-section {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.hero-banner {
+  flex: 2;
+  padding: 30px;
+  border-radius: 16px;
+  background: rgba(2,6,23,0.8);
+  border: 1px solid rgba(168,85,247,.25);
+  box-shadow: 0 0 30px rgba(168,85,247,.2);
+}
+
+.hero-banner h2 {
+  color: #c084fc;
+}
+
+.hero-banner button {
+  margin-top: 15px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #7c3aed, #c084fc);
+  color: white;
+  cursor: pointer;
+}
+
+/* SIDE */
+.side-cards {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.side-card {
+  padding: 20px;
+  border-radius: 12px;
+  background: rgba(2,6,23,0.8);
+  border: 1px solid rgba(168,85,247,.2);
+  text-align: center;
+}
