@@ -29,7 +29,9 @@ body {
   border-radius: 18px;
   background: rgba(2, 6, 23, 0.75);
   backdrop-filter: blur(14px);
-  box-shadow: 0 0 60px rgba(0,0,0,.8);
+  box-shadow:
+    0 0 30px rgba(168,85,247,.18),
+    0 0 60px rgba(0,0,0,.8);
   border: 1px solid rgba(168,85,247,.25);
   text-align: center;
 
@@ -40,7 +42,7 @@ body {
 
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.3s ease;
 }
 
 .auth-card.visible {
@@ -54,6 +56,10 @@ body {
   margin: 0;
   letter-spacing: 4px;
   color: #c084fc;
+  text-shadow:
+    0 0 5px #c084fc,
+    0 0 10px #a855f7,
+    0 0 20px #7c3aed;
 }
 
 .subtitle {
@@ -72,10 +78,14 @@ body {
   color: #fff;
   font-size: 15px;
   outline: 1px solid #4c1d95;
+  box-shadow: 0 0 0 rgba(0,0,0,0);
 }
 
 .auth-card input:focus {
   outline: 2px solid #a855f7;
+  box-shadow:
+    0 0 8px rgba(168,85,247,.45),
+    0 0 16px rgba(124,58,237,.25);
 }
 
 /* ================= BUTONLAR ================= */
@@ -95,29 +105,40 @@ body {
   background: linear-gradient(135deg, #7c3aed, #c084fc);
   color: #ffffff;
   font-weight: 600;
+  box-shadow:
+    0 0 10px rgba(168,85,247,.35),
+    0 0 20px rgba(124,58,237,.18);
 }
 
 #loginBtn:hover,
 #registerSubmit:hover,
 #verifySubmit:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(168,85,247,.45);
+  box-shadow:
+    0 0 12px #a855f7,
+    0 0 24px rgba(124,58,237,.55),
+    0 0 36px rgba(192,132,252,.35);
 }
 
 button.secondary {
   background: transparent;
   color: #c084fc;
   border: 1px solid #a855f7;
+  box-shadow: 0 0 8px rgba(168,85,247,.18);
 }
 
 button.secondary:hover {
   background: rgba(168,85,247,.12);
+  box-shadow:
+    0 0 10px rgba(168,85,247,.28),
+    0 0 20px rgba(124,58,237,.18);
 }
 
 .divider {
   margin: 18px 0;
   font-size: 12px;
   color: #a78bfa;
+  text-shadow: 0 0 8px rgba(167,139,250,.35);
 }
 
 
@@ -136,6 +157,7 @@ button.secondary:hover {
 }
 
 .btn-text {
+  /* Yazıyı hafif sola yasla, spinner için yer bırak */
 }
 
 .spinner {
@@ -147,6 +169,7 @@ button.secondary:hover {
   border-radius: 50%;
   margin-left: 10px;
   animation: smoothSpin 1.4s cubic-bezier(0.6, 0.1, 0.2, 0.9) infinite;
+  box-shadow: 0 0 10px rgba(255,255,255,.25);
 }
 
 .progress-btn.spinning .spinner {
