@@ -389,3 +389,35 @@ button.secondary:hover {
   color: white;
   cursor: pointer;
 }
+
+.game-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.game-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.game-card:hover::after {
+  opacity: 1;
+}
+
+.game-card button {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.game-card:hover button {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
