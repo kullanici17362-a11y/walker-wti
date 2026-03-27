@@ -251,11 +251,11 @@ button.secondary:hover {
 
 /* ARAMA */
 .search-box {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+
   width: 500px;
   display: flex;
+  margin: 0 auto; /* 🔥 ortalar */
+
 }
 
 .search-box input {
@@ -411,6 +411,7 @@ button.secondary:hover {
 
 /* PROFİL SIMGESİ */
 .profile-btn {
+  margin-left: auto;
   width: 42px;
   height: 42px;
   border-radius: 50%;
