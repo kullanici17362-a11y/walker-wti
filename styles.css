@@ -6,7 +6,7 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: Inter, system-ui, Arial;
-  background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.5)),
+  background: linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.4)),
     url("/matrix-bg.jpg") no-repeat center center fixed;
   background-size: cover;
   display: flex;
@@ -209,8 +209,8 @@ button.secondary:hover {
 .main-menu {
   position: fixed;
   inset: 0;
-  background: #020617;
-  color: #f5f3ff;
+  background: #f8fafc;
+  color: #1e1b4b;
   font-family: Inter, system-ui, Arial;
   overflow-y: auto;
 }
@@ -220,9 +220,9 @@ button.secondary:hover {
   display: flex;
   justify-content: space-between;
   padding: 10px 20px;
-  background: rgba(2,6,23,0.9);
+  background: rgba(255,255,255,0.8);
   border-bottom: 1px solid rgba(168,85,247,.2);
-  color: #c084fc;
+  color: #7c3aed;
   font-size: 13px;
 }
 
@@ -232,15 +232,20 @@ button.secondary:hover {
   align-items: center;
   justify-content: space-between;
   padding: 20px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .logo {
   font-size: 20px;
   font-weight: 700;
-  color: #c084fc;
+  color: #7c3aed;
   text-shadow:
-    0 0 5px #c084fc,
-    0 0 10px #a855f7;
+  0 0 6px rgba(168,85,247,.4),
+  0 0 5px #c084fc,
+  0 0 10px #a855f7;
+
 }
 
 /* ARAMA */
@@ -253,9 +258,9 @@ button.secondary:hover {
   padding: 10px;
   border-radius: 10px;
   border: none;
-  background: #020617;
-  color: white;
-  outline: 1px solid #4c1d95;
+  background: #ffffff;
+  color: #1e1b4b;
+  outline: 1px solid #a855f7;
 }
 
 .search-box button {
@@ -272,18 +277,21 @@ button.secondary:hover {
   display: flex;
   gap: 20px;
   padding: 10px 20px;
-  border-top: 1px solid rgba(168,85,247,.15);
-  border-bottom: 1px solid rgba(168,85,247,.15);
+  border-top: 1px solid rgba(168,85,247,.2);
+  border-bottom: 1px solid rgba(168,85,247,.2);
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .main-nav a {
-  color: #d8b4fe;
+  color: #6d28d9;
   text-decoration: none;
   font-size: 14px;
 }
 
 .main-nav a:hover {
-  color: #ffffff;
+  color: #000;
   text-shadow: 0 0 6px #a855f7;
 }
 
@@ -298,9 +306,11 @@ button.secondary:hover {
   flex: 2;
   padding: 30px;
   border-radius: 16px;
-  background: rgba(2,6,23,0.8);
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(168,85,247,.25);
-  box-shadow: 0 0 30px rgba(168,85,247,.2);
+  box-shadow: 0 0 25px rgba(168,85,247,.15);
 }
 
 .hero-banner h2 {
@@ -328,8 +338,10 @@ button.secondary:hover {
 .side-card {
   padding: 20px;
   border-radius: 12px;
-  background: rgba(2,6,23,0.8);
-  border: 1px solid rgba(168,85,247,.2);
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(168,85,247,.25);
   text-align: center;
 }
 
@@ -352,11 +364,13 @@ button.secondary:hover {
 }
 
 .game-card {
-  background: rgba(2,6,23,0.8);
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-radius: 14px;
   overflow: hidden;
   border: 1px solid rgba(168,85,247,.25);
-  box-shadow: 0 0 20px rgba(168,85,247,.15);
+  box-shadow: 0 0 20px rgba(168,85,247,.1);
   transition: 0.25s;
 }
 
@@ -377,5 +391,50 @@ button.secondary:hover {
 .game-card h3 {
   padding: 10px;
   font-size: 15px;
-  color: #e9d5ff;
+  color: #1e1b4b;
+}
+
+.profile-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(168,85,247,.3);
+
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  position: relative;
+  cursor: pointer;
+
+  box-shadow: 0 0 12px rgba(168,85,247,.2);
+}
+
+.profile-btn::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #7c3aed;
+}
+
+.profile-btn::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 7px;
+  width: 22px;
+  height: 12px;
+  transform: translateX(-50%);
+  border-radius: 12px 12px 10px 10px;
+  background: #7c3aed;
+}
+
+.profile-btn:hover {
+  box-shadow: 0 0 14px rgba(168,85,247,.28);
+  transform: translateY(-1px);
 }
