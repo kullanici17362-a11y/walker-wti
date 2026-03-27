@@ -231,6 +231,7 @@ button.secondary:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
   padding: 20px;
   background: linear-gradient(135deg, #a855f7, #c084fc);
   backdrop-filter: blur(8px);
@@ -250,10 +251,11 @@ button.secondary:hover {
 
 /* ARAMA */
 .search-box {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
   display: flex;
-  gap: 0;
-  width: 100%;
-  max-width: 500px;
 }
 
 .search-box input {
@@ -278,11 +280,12 @@ button.secondary:hover {
   transition: 0.3s;
 }
 
-/* 🔥 HOVER EFEKTİ */
+
 .search-btn:hover {
   background: linear-gradient(135deg, #a855f7, #c084fc);
   box-shadow: 0 0 12px rgba(168,85,247,.5);
 }
+
 
 /* NAV */
 .main-nav {
@@ -406,19 +409,16 @@ button.secondary:hover {
   color: #1e1b4b;
 }
 
+/* PROFİL SIMGESİ */
 .profile-btn {
   width: 42px;
   height: 42px;
   border-radius: 50%;
   border: 1px solid rgba(168,85,247,.3);
-
   background: rgba(255,255,255,0.2);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
   position: relative;
   cursor: pointer;
-
   box-shadow: 0 0 12px rgba(168,85,247,.2);
 }
 
