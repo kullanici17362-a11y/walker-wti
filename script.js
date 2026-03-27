@@ -43,6 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const registerCard = document.getElementById("registerCard");
   const verifyCard = document.getElementById("verifyCard");
   const successScreen = document.getElementById("successScreen");
+  const mainMenu = document.getElementById("mainMenu");
+  const authWrapper = document.querySelector(".auth-wrapper");
 
   console.log("LoginCard bulundu mu?", loginCard);  // Debug: Elementler var mı?
 
@@ -50,7 +52,16 @@ document.addEventListener("DOMContentLoaded", () => {
   if (registerCard) registerCard.classList.add("hidden");
   if (verifyCard) verifyCard.classList.add("hidden");
   if (successScreen) successScreen.classList.add("hidden");
-  if (loginCard) showCard(loginCard);
+
+  // localStorage kontrolü
+  const isLoggedIn = localStorage.getItem("loggedIn");
+
+  if (isLoggedIn === "true") {
+    if (authWrapper) authWrapper.style.display = "none";
+    if (mainMenu) mainMenu.style.display = "block";
+  } else {
+    if (loginCard) showCard(loginCard);
+  }
 
   // Socket bağlantısını buraya taşıdım - kütüphane yüklendikten sonra bağlan, io not defined hatasını giderir
   if (typeof io !== 'undefined') {
@@ -137,10 +148,13 @@ document.addEventListener("DOMContentLoaded", () => {
           hideCard(verifyCard);
           showCard(successScreen);
 
+          // giriş durumunu kaydet
+          localStorage.setItem("loggedIn", "true");
+
           setTimeout(() => {
-         document.querySelector(".auth-wrapper").style.display = "none";
-         document.getElementById("mainMenu").style.display = "block";
-         }, 900);
+            if (authWrapper) authWrapper.style.display = "none";
+            if (mainMenu) mainMenu.style.display = "block";
+          }, 900);
 
         }, 2000);
       });
