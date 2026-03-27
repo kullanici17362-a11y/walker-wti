@@ -6,7 +6,7 @@ const path = require('path');
 // Socket.io'yu CORS ile başlat (Vercel domain'ine izin ver, wildcard '*' ile test için tüm domain'lere açabilirsin)
 const io = require('socket.io')(http, {
   cors: {
-    origin: "https://walker-wti.vercel.app",  // Frontend domain'in, veya "*" ile test et
+    origin: "*",  // Frontend domain'in, veya "*" ile test et
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
     credentials: true
