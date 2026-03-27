@@ -212,4 +212,33 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+  const countdownEl = document.getElementById("countdownTimer");
+
+// Örnek bitiş tarihi
+const targetDate = new Date("2026-04-05T23:59:59").getTime();
+
+function updateCountdown() {
+  if (!countdownEl) return;
+
+  const now = new Date().getTime();
+  const distance = targetDate - now;
+
+  if (distance <= 0) {
+    countdownEl.textContent = "SÜRE DOLDU";
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((distance / (1000 * 60)) % 60);
+  const seconds = Math.floor((distance / 1000) % 60);
+
+  countdownEl.textContent =
+    `${days}G ${hours.toString().padStart(2, "0")}:${minutes
+      .toString()
+      .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
 });
