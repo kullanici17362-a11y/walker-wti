@@ -450,3 +450,11 @@ button.secondary:hover {
   box-shadow: 0 0 14px rgba(168,85,247,.28);
   transform: translateY(-1px);
 }
+
+/* Profil butonunu sağa sabitle */
+.header-actions {
+  position: absolute;
+  right: 20px; /* Profil butonunun sağa 20px mesafede olması */
+  top: 50%;
+  transform: translateY(-50%); /* Yatayda ortalama */
+}
