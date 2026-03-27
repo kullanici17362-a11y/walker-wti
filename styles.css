@@ -374,7 +374,7 @@ button.secondary:hover {
 
 .games-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: 1fr;
   gap: 20px;
 }
 
@@ -480,19 +480,18 @@ button.secondary:hover {
 .event-modal {
   position: relative;
   width: 90%;
-  max-width: 1050px;
-  max-height: 90vh;
-  overflow-y: auto;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.18);
-  border-radius: 22px;
-  box-shadow: 0 0 30px rgba(0,0,0,0.35);
+  max-width: 1000px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 24px;
   padding: 24px;
 }
 
 .event-modal img {
   width: 100%;
-  max-height: 65vh;
+  max-height: 70vh;
   object-fit: cover;
   border-radius: 18px;
   display: block;
