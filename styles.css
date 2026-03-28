@@ -786,4 +786,11 @@ button.secondary:hover {
   .event-modal-content p {
     font-size: 14px;
   }
+
+  #no-result-screen h2 {
+    font-size: 42px;
+    text-shadow: 0 0 15px rgba(168, 85, 247, 0.6);
+    margin-bottom: 10px;
+}
+
 }

@@ -277,4 +277,101 @@ setInterval(() => {
   showSlide(currentSlide);
 }, 3000);
 
+// ====================== ARAMA FONKSİYONU ======================
+
+const searchInput = document.querySelector('.search-box input');
+const searchBtn = document.querySelector('.search-btn');
+
+function performSearch() {
+    const query = searchInput.value.trim();
+
+    if (query === '') {
+        alert("Lütfen arama yapmak için bir şey yazın!");
+        return;
+    }
+
+    // Ana içeriği gizle
+    const mainContent = document.querySelector('.main-content') || 
+                        document.querySelector('.hero-section') || 
+                        document.getElementById('mainContent');
+
+    if (mainContent) {
+        mainContent.style.display = 'none';
+    }
+
+    // Mevcut sonuç ekranı varsa sil
+    let noResultScreen = document.getElementById('no-result-screen');
+    
+    if (!noResultScreen) {
+        noResultScreen = document.createElement('div');
+        noResultScreen.id = 'no-result-screen';
+        noResultScreen.style.cssText = `
+            text-align: center;
+            padding: 80px 20px;
+            color: #c084fc;
+            font-size: 24px;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 16px;
+            margin: 20px;
+        `;
+
+        noResultScreen.innerHTML = `
+            <h2>😕 Sonuç Bulunamadı</h2>
+            <p style="font-size: 18px; margin-top: 15px; color: #d8b4fe;">
+                "${query}" ile ilgili herhangi bir sonuç bulunamadı.
+            </p>
+            <button onclick="clearSearch()" 
+                    style="margin-top: 30px; padding: 12px 28px; background: linear-gradient(135deg, #7c3aed, #c084fc); 
+                           color: white; border: none; border-radius: 12px; font-size: 16px; cursor: pointer;">
+                Ana Sayfaya Dön
+            </button>
+        `;
+
+        // Ana container'a ekle (nerede ekleyeceğimizi bulalım)
+        const container = document.querySelector('.main-menu') || 
+                         document.body;
+        container.appendChild(noResultScreen);
+    } else {
+        // Eğer ekran varsa sadece metni güncelle
+        noResultScreen.querySelector('p').textContent = `"${query}" ile ilgili herhangi bir sonuç bulunamadı.`;
+    }
+}
+
+// Arama butonuna tıklama
+if (searchBtn) {
+    searchBtn.addEventListener('click', performSearch);
+}
+
+// Enter tuşuna basma
+if (searchInput) {
+    searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            performSearch();
+        }
+    });
+}
+
+// Arama sonucundan ana sayfaya dönme fonksiyonu
+window.clearSearch = function() {
+    const noResultScreen = document.getElementById('no-result-screen');
+    if (noResultScreen) {
+        noResultScreen.remove();
+    }
+
+    const mainContent = document.querySelector('.main-content') || 
+                       document.querySelector('.hero-section');
+    if (mainContent) {
+        mainContent.style.display = 'flex';
+    }
+
+    if (searchInput) {
+        searchInput.value = '';
+    }
+};
+
 });
