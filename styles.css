@@ -817,4 +817,29 @@ button.secondary:hover {
 .profile-dropdown.show {
   display: block !important;
 }
+
+/* EN TEMİZ DROPDOWN */
+.header-actions {
+  position: relative;
+}
+
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  top: 70px;
+  right: 10px;
+  width: 290px;
+  background: rgba(15, 23, 42, 0.97);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(168, 85, 247, 0.6);
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+  padding: 20px;
+  z-index: 10000;
+  color: #e9d5ff;
+}
+
+.profile-dropdown.show {
+  display: block;
+}
 }

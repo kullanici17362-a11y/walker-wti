@@ -374,30 +374,37 @@ window.clearSearch = function() {
     }
 };
 
-// ================= PROFİL DROPDOWN - DÜZELTİLMİŞ VE GÜÇLÜ VERSİYON =================
+// ================= PROFİL DROPDOWN - SON DÜZELTME =================
 document.addEventListener('DOMContentLoaded', function() {
+    console.log("Profil Dropdown scripti çalıştı");
+
     const profileBtn = document.getElementById('profileBtn');
     const profileDropdown = document.getElementById('profileDropdown');
 
-    if (!profileBtn || !profileDropdown) {
-        console.error("Profil butonu veya dropdown bulunamadı!");
+    if (!profileBtn) {
+        console.error("profileBtn bulunamadı!");
+        return;
+    }
+    if (!profileDropdown) {
+        console.error("profileDropdown bulunamadı!");
         return;
     }
 
-    // Tıklama ile aç/kapat
+    console.log("Profil butonu ve dropdown bulundu.");
+
     profileBtn.addEventListener('click', function(e) {
-        e.stopImmediatePropagation();   // Daha güçlü durdurma
+        e.stopImmediatePropagation();
+        console.log("Profil butonuna tıklandı");
         profileDropdown.classList.toggle('show');
     });
 
-    // Dışarı tıklayınca kapat
     document.addEventListener('click', function(e) {
         if (!profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
             profileDropdown.classList.remove('show');
         }
     });
 
-    // Escape tuşu ile kapat
+    // Escape tuşu
     document.addEventListener('keydown', function(e) {
         if (e.key === "Escape") {
             profileDropdown.classList.remove('show');
