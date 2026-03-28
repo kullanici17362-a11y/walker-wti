@@ -885,32 +885,31 @@ button.secondary:hover {
   }
 }
 
-/* ================= PROFİL DROPDOWN - DÜZELTİLMİŞ HALİ ================= */
+/* ================= SON ÇARE - PROFİL DROPDOWN DÜZELTME ================= */
 .header-actions {
-  position: relative;
+  position: relative !important;
 }
 
 .profile-dropdown {
-  position: absolute;
-  top: 68px;
-  right: 8px;
-  width: 290px;
-  background: rgba(15, 23, 42, 0.97);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(168, 85, 247, 0.6);
-  border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  display: none;           /* ← EN ÖNEMLİ KISIM: Başta gizli olsun */
-  z-index: 10000;
-  color: #e9d5ff;
-  font-size: 15px;
+  position: absolute !important;
+  top: 68px !important;
+  right: 8px !important;
+  width: 290px !important;
+  background: rgba(15, 23, 42, 0.97) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(168, 85, 247, 0.6) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8) !important;
+  padding: 20px !important;
+  display: none !important;           /* BU ÇOK ÖNEMLİ */
+  z-index: 10000 !important;
+  color: #e9d5ff !important;
+  font-size: 15px !important;
 }
 
-/* SADECE TIKLANDIĞINDA AÇILSIN */
 .profile-dropdown.show {
-  display: block;
-  animation: dropdownPop 0.25s ease forwards;
+  display: block !important;
+  animation: dropdownPop 0.25s ease forwards !important;
 }
 
 @keyframes dropdownPop {
@@ -924,6 +923,7 @@ button.secondary:hover {
   }
 }
 
+/* İçerik stilleri */
 .dropdown-header {
   font-size: 17px;
   font-weight: 700;
@@ -970,37 +970,15 @@ button.secondary:hover {
   background: #dc2626;
 }
 
-/* MOBİL İÇİN */
+/* Mobil */
 @media (max-width: 768px) {
   .profile-dropdown {
-    top: 75px;
-    left: 15px;
-    right: 15px;
-    width: auto;
-    max-width: 340px;
+    top: 75px !important;
+    left: 15px !important;
+    right: 15px !important;
+    width: auto !important;
+    max-width: 340px !important;
   }
 }
-
-/* ACİL VE KESİN DÜZELTME */
-.profile-dropdown {
-  display: none !important;
-  position: absolute;
-  top: 68px;
-  right: 8px;
-  width: 290px;
-  background: rgba(15, 23, 42, 0.97);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(168, 85, 247, 0.6);
-  border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  z-index: 10000;
-  color: #e9d5ff;
-}
-
-.profile-dropdown.show {
-  display: block !important;
-}
-
 
 }
