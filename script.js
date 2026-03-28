@@ -215,7 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
         modalDesc.innerHTML = `
           ${card.dataset.desc || ""}
           <br><br>
-          <strong>Not:</strong> Şartları yerine getirip çekilişe katılmaya hak kazanan üyelerimizin çekiliş için ikinci bir bilet almaları durumunda tespit edilip hakları iptal edilecektir.
+          <strong>Not:Bilet Al butonunun aktif olması için linki 5 arkadaşınız ile paylaşmanız gerekmektedir. Şartları yerine getirip çekilişe katılmaya hak kazanan üyelerimizin çekiliş için ikinci bir bilet almaları durumunda tespit edilip hakları iptal edilecektir.</strong>
         `;
       }
 
