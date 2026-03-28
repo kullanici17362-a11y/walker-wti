@@ -374,39 +374,34 @@ window.clearSearch = function() {
     }
 };
 
-// ================= PROFİL DROPDOWN =================
-const profileBtn = document.getElementById('profileBtn');
-const profileDropdown = document.getElementById('profileDropdown');
+// ================= PROFİL DROPDOWN - DÜZELTİLMİŞ VE GÜÇLÜ VERSİYON =================
+document.addEventListener('DOMContentLoaded', function() {
+    const profileBtn = document.getElementById('profileBtn');
+    const profileDropdown = document.getElementById('profileDropdown');
 
-if (profileBtn && profileDropdown) {
+    if (!profileBtn || !profileDropdown) {
+        console.error("Profil butonu veya dropdown bulunamadı!");
+        return;
+    }
+
+    // Tıklama ile aç/kapat
     profileBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
+        e.stopImmediatePropagation();   // Daha güçlü durdurma
         profileDropdown.classList.toggle('show');
     });
 
-    // Dışarıya tıklayınca kapat
+    // Dışarı tıklayınca kapat
     document.addEventListener('click', function(e) {
-        if (!profileDropdown.contains(e.target) && !profileBtn.contains(e.target)) {
+        if (!profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
             profileDropdown.classList.remove('show');
         }
     });
-}
 
-// Logout
-const logoutBtn = document.getElementById('logoutBtn');
-if (logoutBtn) {
-    logoutBtn.addEventListener('click', function() {
-        if (confirm("Çıkış yapmak istediğinize emin misiniz?")) {
-            localStorage.removeItem('loggedIn');
-            localStorage.removeItem('userData');
-            window.location.reload();
+    // Escape tuşu ile kapat
+    document.addEventListener('keydown', function(e) {
+        if (e.key === "Escape") {
+            profileDropdown.classList.remove('show');
         }
     });
-}
-
-// Örnek veri (gerçek verileri buraya koyacaksın)
-document.getElementById('userId').textContent = "WALKER-78492";
-document.getElementById('registerDate').textContent = "15.02.2026";
-document.getElementById('activeTickets').textContent = "4";
-
+});
 });
