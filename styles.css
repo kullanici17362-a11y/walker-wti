@@ -468,9 +468,85 @@ button.secondary:hover {
 /* Profil butonunu sağa sabitle */
 .header-actions {
   position: absolute;
-  right: 20px; /* Profil butonunun sağa 20px mesafede olması */
+  right: 20px;
   top: 50%;
-  transform: translateY(-50%); /* Yatayda ortalama */
+  transform: translateY(-50%);
+}
+
+/* ================= PROFİL DROPDOWN ================= */
+.header-actions {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  top: 58px;
+  right: 0;
+  width: 290px;
+  background: rgba(15, 23, 42, 0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(168, 85, 247, 0.6);
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+  padding: 18px;
+  z-index: 10000;
+  color: #e9d5ff;
+}
+
+.profile-dropdown.show {
+  display: block;
+}
+
+.dropdown-header {
+  font-size: 16px;
+  font-weight: 700;
+  color: #c084fc;
+  margin-bottom: 14px;
+}
+
+.dropdown-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.dropdown-item strong {
+  color: #c084fc;
+  font-size: 13px;
+}
+
+.dropdown-item span {
+  color: #f5e9ff;
+}
+
+.dropdown-divider {
+  border: none;
+  border-top: 1px solid rgba(168, 85, 247, 0.25);
+  margin: 14px 0;
+}
+
+.dropdown-logout-btn {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #7c3aed, #c084fc);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.dropdown-logout-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 12px rgba(168,85,247,.35);
 }
 
 .event-overlay {
@@ -689,9 +765,17 @@ button.secondary:hover {
 
   .header-actions {
     grid-area: actions;
-    position: static;
+    position: relative;
+    right: auto;
+    top: auto;
     transform: none;
     margin-left: auto;
+  }
+
+  .profile-dropdown {
+    top: 54px;
+    right: 0;
+    width: 260px;
   }
 
   .search-box {
@@ -791,6 +875,7 @@ button.secondary:hover {
     font-size: 42px;
     text-shadow: 0 0 15px rgba(168, 85, 247, 0.6);
     margin-bottom: 10px;
+  }
 }
 
 /* ================= EN SON ve EN SERT DÜZELTME ================= */
@@ -842,4 +927,4 @@ button.secondary:hover {
 .profile-dropdown.show {
   display: block;
 }
-}
+
