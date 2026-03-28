@@ -1101,3 +1101,20 @@ button.secondary:hover {
   }
 }
 
+.main-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ARKA PLAN WALPAPER */
+.main-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/matrix-bg.jpg") center/cover no-repeat;
+  opacity: 0.05; /* 🔥 AYAR BURASI */
+  filter: blur(2px);
+  pointer-events: none;
+  z-index: -1;
+}
+
