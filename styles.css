@@ -640,3 +640,111 @@ button.secondary:hover {
 .next {
   right: 12px;
 }
+
+@media (max-width: 768px) {
+  .main-header {
+    height: auto;
+    padding: 12px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .logo img {
+    height: 34px;
+  }
+
+  .search-box {
+    order: 3;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .search-box input {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .header-actions {
+    margin-left: auto;
+  }
+
+  .main-nav {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 10px 12px;
+  }
+
+  .hero-section {
+    flex-direction: column;
+    padding: 12px;
+    gap: 16px;
+  }
+
+  .hero-banner,
+  .games-section,
+  .side-cards {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-banner {
+    min-height: auto;
+    padding: 12px;
+  }
+
+  .hero-slider {
+    height: auto;
+  }
+
+  .hero-slider img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .games-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .game-card {
+    max-width: 100%;
+  }
+
+  .side-cards {
+    gap: 12px;
+  }
+
+  .countdown-image {
+    height: auto;
+  }
+
+  .slider-btn {
+    font-size: 38px;
+  }
+
+  .prev {
+    left: 8px;
+  }
+
+  .next {
+    right: 8px;
+  }
+
+  .event-modal {
+    width: 95%;
+    padding: 14px;
+  }
+
+  .event-modal img {
+    max-height: 40vh;
+  }
+
+  .event-modal-content h2 {
+    font-size: 22px;
+  }
+
+  .event-modal-content p {
+    font-size: 14px;
+  }
+}
