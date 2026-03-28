@@ -239,7 +239,7 @@ button.secondary:hover {
 }
 
 .logo {
-  font-size: 20px;
+  font-size: 75px;
   font-weight: 700;
   color: white;
   text-shadow:
@@ -543,7 +543,7 @@ button.secondary:hover {
 }
 
 .logo img {
-  height: 36px;
+  height: 75px;
   object-fit: contain;
   filter: drop-shadow(0 0 6px rgba(168,85,247,.6));
 }
