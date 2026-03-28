@@ -642,25 +642,43 @@ button.secondary:hover {
 }
 
 @media (max-width: 768px) {
-  .main-header {
-    height: auto;
-    padding: 12px;
-    flex-wrap: wrap;
-    gap: 12px;
+
+  .auth-card {
+    width: 92% !important;
+    max-width: 380px;
+    padding: 30px 20px;
   }
 
-  .logo img {
-    height: 34px;
+  .auth-card .logo {
+    width: 160px !important;
+    height: auto !important;
+    margin: 10px auto 25px !important;
+  }
+
+  .auth-card h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  .main-header {
+    height: 58px !important;
+    min-height: 58px !important;
+    padding: 0 12px !important;
+  }
+
+  .main-header .logo img {
+    height: 42px !important;
+    width: auto !important;
   }
 
   .search-box {
     order: 3;
-    width: 100%;
+    width: 100% !important;
     max-width: 100%;
-    margin: 0;
+    margin: 8px 0 !important;
   }
-
+  
   .search-box input {
+    padding: 13px 16px;
     width: 100%;
     font-size: 14px;
   }
@@ -669,23 +687,30 @@ button.secondary:hover {
     margin-left: auto;
   }
 
-  .main-nav {
-    flex-wrap: wrap;
-    gap: 12px;
+ .main-nav {
     padding: 10px 12px;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .main-nav a {
+    font-size: 13.5px;
   }
 
   .hero-section {
     flex-direction: column;
-    padding: 12px;
     gap: 16px;
+    padding: 12px;
+
   }
 
   .hero-banner,
   .games-section,
   .side-cards {
     width: 100%;
-    max-width: 100%;
+    max-width: 100% !important;
+  
   }
 
   .hero-banner {
@@ -746,5 +771,16 @@ button.secondary:hover {
 
   .event-modal-content p {
     font-size: 14px;
+  }
+
+  .topbar {
+    padding: 6px 12px !important;
+    font-size: 12.5px;
+  }
+
+  .hero-banner,
+  .side-card,
+  .game-card {
+    border-radius: 14px;
   }
 }
