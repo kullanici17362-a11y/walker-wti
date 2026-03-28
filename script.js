@@ -465,4 +465,9 @@ if (savedId) {
       }, 1500);
     });
   }
+  document.querySelectorAll(".buy-ticket-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    alert("Afferin la Yarrak belki sana çıkar😎");
+  });
+});
   });
