@@ -885,7 +885,7 @@ button.secondary:hover {
   }
 }
 
-/* ================= PROFİL DROPDOWN - TEMİZ VE STABİL VERSİYON ================= */
+/* ================= PROFİL DROPDOWN - DÜZELTİLMİŞ HALİ ================= */
 .header-actions {
   position: relative;
 }
@@ -901,12 +901,13 @@ button.secondary:hover {
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
   padding: 20px;
-  display: none;
+  display: none;           /* ← EN ÖNEMLİ KISIM: Başta gizli olsun */
   z-index: 10000;
   color: #e9d5ff;
   font-size: 15px;
 }
 
+/* SADECE TIKLANDIĞINDA AÇILSIN */
 .profile-dropdown.show {
   display: block;
   animation: dropdownPop 0.25s ease forwards;
@@ -969,7 +970,7 @@ button.secondary:hover {
   background: #dc2626;
 }
 
-/* Mobil için */
+/* MOBİL İÇİN */
 @media (max-width: 768px) {
   .profile-dropdown {
     top: 75px;
