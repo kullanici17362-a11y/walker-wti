@@ -374,4 +374,27 @@ window.clearSearch = function() {
     }
 };
 
+// ================= PROFİL DROPDOWN =================
+const profileBtn = document.getElementById('profileBtn');
+const profileDropdown = document.getElementById('profileDropdown');
+
+if (profileBtn && profileDropdown) {
+    profileBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        profileDropdown.classList.toggle('show');
+    });
+
+    // Dışarı tıklayınca dropdown'ı kapat
+    document.addEventListener('click', function(e) {
+        if (!profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+            profileDropdown.classList.remove('show');
+        }
+    });
+}
+
+// Örnek veri (gerçek verileri buraya koyacaksın)
+document.getElementById('userId').textContent = "WALKER-78492";
+document.getElementById('registerDate').textContent = "15.02.2026";
+document.getElementById('activeTickets').textContent = "4";
+
 });

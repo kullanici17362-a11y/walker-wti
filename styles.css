@@ -793,4 +793,70 @@ button.secondary:hover {
     margin-bottom: 10px;
 }
 
+/* ================= PROFİL DROPDOWN ================= */
+.profile-dropdown {
+    position: absolute;
+    top: 55px;
+    right: 15px;
+    width: 260px;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(168, 85, 247, 0.4);
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    padding: 16px;
+    display: none;
+    z-index: 10000;
+    color: #e9d5ff;
+}
+
+.profile-dropdown.show {
+    display: block;
+    animation: dropdownFade 0.2s ease;
+}
+
+@keyframes dropdownFade {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-item {
+    padding: 10px 12px;
+    font-size: 14.5px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item strong {
+    color: #c084fc;
+}
+
+.dropdown-divider {
+    border: none;
+    height: 1px;
+    background: rgba(168, 85, 247, 0.2);
+    margin: 12px 0;
+}
+
+.dropdown-logout-btn {
+    width: 100%;
+    padding: 12px;
+    background: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.dropdown-logout-btn:hover {
+    background: #dc2626;
+}
+
 }
