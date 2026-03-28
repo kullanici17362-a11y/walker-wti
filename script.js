@@ -374,41 +374,65 @@ window.clearSearch = function() {
     }
 };
 
-// ================= PROFİL DROPDOWN - SON DÜZELTME =================
-document.addEventListener('DOMContentLoaded', function() {
-    console.log("Profil Dropdown scripti çalıştı");
+  // PROFİL DROPDOWN
+  const profileBtn = document.getElementById("profileBtn");
+  const profileDropdown = document.getElementById("profileDropdown");
+  const logoutBtn = document.getElementById("logoutBtn");
+  const userId = document.getElementById("userId");
+  const registerDate = document.getElementById("registerDate");
+  const activeTickets = document.getElementById("activeTickets");
 
-    const profileBtn = document.getElementById('profileBtn');
-    const profileDropdown = document.getElementById('profileDropdown');
-
-    if (!profileBtn) {
-        console.error("profileBtn bulunamadı!");
-        return;
+  if (profileBtn && profileDropdown) {
+    if (userId) {
+      const savedId = localStorage.getItem("userId");
+      if (savedId) {
+        userId.textContent = savedId;
+      } else {
+        const generatedId = "XP-" + Math.floor(100000 + Math.random() * 900000);
+        userId.textContent = generatedId;
+        localStorage.setItem("userId", generatedId);
+      }
     }
-    if (!profileDropdown) {
-        console.error("profileDropdown bulunamadı!");
-        return;
+
+    if (registerDate) {
+      const savedDate = localStorage.getItem("registerDate");
+      if (savedDate) {
+        registerDate.textContent = savedDate;
+      } else {
+        const today = new Date().toLocaleDateString("tr-TR");
+        registerDate.textContent = today;
+        localStorage.setItem("registerDate", today);
+      }
     }
 
-    console.log("Profil butonu ve dropdown bulundu.");
+    if (activeTickets) {
+      activeTickets.textContent = localStorage.getItem("activeTickets") || "0";
+    }
 
-    profileBtn.addEventListener('click', function(e) {
-        e.stopImmediatePropagation();
-        console.log("Profil butonuna tıklandı");
-        profileDropdown.classList.toggle('show');
+    profileBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      profileDropdown.classList.toggle("show");
     });
 
-    document.addEventListener('click', function(e) {
-        if (!profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
-            profileDropdown.classList.remove('show');
-        }
+    profileDropdown.addEventListener("click", (e) => {
+      e.stopPropagation();
     });
 
-    // Escape tuşu
-    document.addEventListener('keydown', function(e) {
-        if (e.key === "Escape") {
-            profileDropdown.classList.remove('show');
-        }
+    document.addEventListener("click", () => {
+      profileDropdown.classList.remove("show");
     });
-});
-});
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        profileDropdown.classList.remove("show");
+      }
+    });
+
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", () => {
+        localStorage.removeItem("loggedIn");
+        location.reload();
+      });
+    }
+  }
+  });
