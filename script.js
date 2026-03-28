@@ -374,7 +374,7 @@ window.clearSearch = function() {
     }
 };
 
-// ================= PROFİL DROPDOWN =================
+// PROFİL DROPDOWN
 const profileBtn = document.getElementById('profileBtn');
 const profileDropdown = document.getElementById('profileDropdown');
 
@@ -384,9 +384,9 @@ if (profileBtn && profileDropdown) {
         profileDropdown.classList.toggle('show');
     });
 
-    // Dışarı tıklayınca dropdown'ı kapat
+    // Dışarı tıklayınca kapat
     document.addEventListener('click', function(e) {
-        if (!profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+        if (!profileBtn.contains(e.target)) {
             profileDropdown.classList.remove('show');
         }
     });
