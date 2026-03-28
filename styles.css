@@ -228,6 +228,9 @@ button.secondary:hover {
 
 /* HEADER */
 .main-header {
+  height: 70px;
+  display: flex;
+  align-items: center;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -240,6 +243,7 @@ button.secondary:hover {
 
 .logo {
   font-size: 125px;
+  max-height: 100%;
   font-weight: 700;
   color: white;
   text-shadow:
@@ -544,6 +548,7 @@ button.secondary:hover {
 
 .logo img {
   height: 125px;
+  max-height: 100%;
   object-fit: contain;
   filter: drop-shadow(0 0 6px rgba(168,85,247,.6));
 }
