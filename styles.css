@@ -1045,58 +1045,50 @@ button.secondary:hover {
   align-items: center;
   height: 40px;
   background: #f3e8ff;
+  overflow: hidden;
   border-top: none;
   border-bottom: none;
-  overflow: hidden;
 }
 
 .winner-label {
   position: relative;
-  z-index: 3;
+  z-index: 5;
   flex: 0 0 auto;
-  padding: 0 16px;
   height: 100%;
   display: flex;
   align-items: center;
+  padding: 0 16px;
   background: #f3e8ff;
   color: #6d28d9;
   font-weight: 700;
   white-space: nowrap;
-  box-shadow: 12px 0 18px #f3e8ff;
+  box-shadow: 18px 0 24px #f3e8ff;
 }
 
 .winner-marquee {
   position: relative;
   flex: 1;
-  overflow: hidden;
   height: 100%;
+  overflow: hidden;
   display: flex;
   align-items: center;
 }
 
 .winner-track {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 36px;
   white-space: nowrap;
-  color: #22133d;
-  font-size: 14px;
-  font-weight: 600;
   will-change: transform;
+  transform: translateX(0);
 }
 
 .winner-id {
   flex: 0 0 auto;
-  text-shadow: 0 0 8px rgba(168,85,247,.18);
-}
-
-@keyframes winnerScroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  color: #7c3aed;
+  font-size: 14px;
+  font-weight: 600;
+  text-shadow: 0 0 6px rgba(168,85,247,.18);
 }
 
 .main-content {
@@ -1125,5 +1117,25 @@ button.secondary:hover {
   filter: blur(2px);
   pointer-events: none;
   z-index: -1;
+}
+
+.hero-section {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/images/anamenu.jpg") center center / cover no-repeat;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-section > * {
+  position: relative;
+  z-index: 1;
 }
 

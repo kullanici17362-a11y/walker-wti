@@ -514,7 +514,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-   // ================= KAZANANLAR - GERÇEK SONSUZ AKIŞ =================
+// ================= KAZANANLAR ŞERİDİ - GERÇEK SONSUZ AKIŞ =================
 const winnerTrack = document.getElementById("winnerTrack");
 
 function generateWinnerId() {
@@ -522,41 +522,50 @@ function generateWinnerId() {
   return `XPAY-${number}`;
 }
 
-function createWinnerElement() {
-  const span = document.createElement("span");
-  span.className = "winner-id";
-  span.textContent = generateWinnerId();
-  return span;
+function createWinnerItem() {
+  const item = document.createElement("span");
+  item.className = "winner-id";
+  item.textContent = generateWinnerId();
+  return item;
 }
 
-function startInfiniteWinnerScroll() {
+function startWinnerMarquee() {
   if (!winnerTrack) return;
 
-  // İlk dolum (ekranı doldurana kadar)
-  for (let i = 0; i < 25; i++) {
-    winnerTrack.appendChild(createWinnerElement());
+  winnerTrack.innerHTML = "";
+
+  // İlk dolum
+  for (let i = 0; i < 20; i++) {
+    winnerTrack.appendChild(createWinnerItem());
   }
 
   let offset = 0;
+  const speed = 0.8; // hız: 0.4 daha yavaş, 0.8 daha hızlı
 
-  function animate() {
-    offset -= 0.5; // hız (istersen 0.3 yap daha yavaş)
-
+  function step() {
+    offset -= speed;
     winnerTrack.style.transform = `translateX(${offset}px)`;
 
-    // İlk eleman tamamen çıkınca → sil ve sona yenisini ekle
     const first = winnerTrack.firstElementChild;
 
-    if (first && first.getBoundingClientRect().right < 0) {
-      winnerTrack.appendChild(createWinnerElement());
-      winnerTrack.removeChild(first);
+    if (first) {
+      const firstWidth = first.offsetWidth;
+      const gap = 36;
+
+      if (Math.abs(offset) >= firstWidth + gap) {
+        offset += firstWidth + gap;
+        winnerTrack.appendChild(createWinnerItem());
+        winnerTrack.removeChild(first);
+        winnerTrack.style.transform = `translateX(${offset}px)`;
+      }
     }
 
-    requestAnimationFrame(animate);
+    requestAnimationFrame(step);
   }
 
-  animate();
+  requestAnimationFrame(step);
 }
 
-startInfiniteWinnerScroll();
+startWinnerMarquee();
+
 });
