@@ -215,6 +215,12 @@ button.secondary:hover {
   overflow-y: auto;
 }
 
+.main-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
 /* ÜST BAR */
 .topbar {
   display: flex;
@@ -330,6 +336,7 @@ button.secondary:hover {
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(168,85,247,.25);
   box-shadow: 0 0 25px rgba(168,85,247,.15);
+  max-width: 720px;
 }
 
 .hero-banner h2 {
@@ -367,6 +374,7 @@ button.secondary:hover {
 /* ================= OYUNLAR ================= */
 
 .games-section {
+  width: 280px;
   padding: 20px;
 }
 
@@ -387,6 +395,7 @@ button.secondary:hover {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 14px;
+  max-width: 260px;
   overflow: hidden;
   border: 1px solid rgba(168,85,247,.25);
   box-shadow: 0 0 20px rgba(168,85,247,.1);
@@ -585,7 +594,7 @@ button.secondary:hover {
 .hero-slider {
   position: relative;
   width: 100%;
-  height: 420px;
+  height: 260px;
   border-radius: 16px;
   overflow: hidden;
 }
@@ -602,27 +611,28 @@ button.secondary:hover {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 46px;
-  height: 46px;
-  border: none;
-  border-radius: 50%;
-  background: rgba(0,0,0,0.35);
+  
+  background: none;       /* ❌ arka plan yok */
+  border: none;           /* ❌ border yok */
+  
   color: white;
-  font-size: 24px;
+  font-size: 36px;        /* 🔥 ok büyük */
   cursor: pointer;
   z-index: 2;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  
+  opacity: 0.7;
+  transition: 0.2s;
 }
 
 .slider-btn:hover {
-  background: rgba(168,85,247,0.6);
+  opacity: 1;
+  transform: translateY(-50%) scale(1.2); /* hover büyüme */
 }
 
 .prev {
-  left: 14px;
+  left: 10px;
 }
 
 .next {
-  right: 14px;
+  right: 10px;
 }

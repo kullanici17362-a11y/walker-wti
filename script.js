@@ -241,7 +241,6 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
-
 const sliderImages = [
   "/images/slide1.jpg",
   "/images/slide2.jpg",
@@ -272,4 +271,10 @@ if (prevSlide && nextSlide && sliderImage) {
     showSlide(currentSlide);
   });
 }
+
+setInterval(() => {
+  currentSlide = (currentSlide + 1) % sliderImages.length;
+  showSlide(currentSlide);
+}, 3000);
+
 });
