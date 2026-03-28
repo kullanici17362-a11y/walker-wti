@@ -981,4 +981,39 @@ button.secondary:hover {
   }
 }
 
+/* ================= SON ve KESİN DÜZELTME - PROFİL DROPDOWN ================= */
+.header-actions {
+  position: relative !important;
+}
+
+.profile-dropdown {
+  position: absolute !important;
+  top: 68px !important;
+  right: 8px !important;
+  width: 290px !important;
+  background: rgba(15, 23, 42, 0.97) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(168, 85, 247, 0.6) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8) !important;
+  padding: 20px !important;
+  display: none !important;
+  z-index: 10000 !important;
+  color: #e9d5ff !important;
+}
+
+.profile-dropdown.show {
+  display: block !important;
+}
+
+/* Mobil için */
+@media (max-width: 768px) {
+  .profile-dropdown {
+    top: 75px !important;
+    left: 15px !important;
+    right: 15px !important;
+    width: auto !important;
+    max-width: 340px !important;
+  }
+}
 }
