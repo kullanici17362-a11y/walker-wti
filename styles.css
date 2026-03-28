@@ -549,7 +549,7 @@ button.secondary:hover {
 .logo img {
   height: 125px;
   max-height: 100%;
-  margin-top: -25px;
+  transform: translateY(-20px); 
   object-fit: contain;
   filter: drop-shadow(0 0 6px rgba(168,85,247,.6));
 }
