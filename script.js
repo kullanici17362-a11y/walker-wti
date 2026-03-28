@@ -451,4 +451,18 @@ if (savedId) {
       });
     }
   }
+
+    const copyLinkBtn = document.getElementById("copyLinkBtn");
+
+  if (copyLinkBtn) {
+    copyLinkBtn.addEventListener("click", () => {
+      navigator.clipboard.writeText("https://walker-wti.vercel.app/");
+
+      copyLinkBtn.innerHTML = "✔";
+
+      setTimeout(() => {
+        copyLinkBtn.innerHTML = '<img src="/images/link-icon.png" alt="link">';
+      }, 1500);
+    });
+  }
   });

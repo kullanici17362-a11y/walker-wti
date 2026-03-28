@@ -882,5 +882,56 @@ button.secondary:hover {
   }
 }
 
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.buy-ticket-btn {
+  background: linear-gradient(135deg, #7c3aed, #c084fc);
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.buy-ticket-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 12px rgba(168,85,247,.35);
+}
+
+.copy-link-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.copy-link-btn img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  filter: invert(1);
+}
+
+.copy-link-btn:hover {
+  background: rgba(255,255,255,0.2);
+  box-shadow: 0 0 10px rgba(168,85,247,.25);
+}
 
 

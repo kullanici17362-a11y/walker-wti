@@ -172,17 +172,24 @@
   </section>
 </div>
 
-  <!-- Event Overlay -->
   <div id="eventOverlay" class="event-overlay hidden">
-    <div class="event-modal">
-      <button id="closeEventModal" class="close-event-modal">×</button>
-      <img id="eventModalImg" src="" alt="">
-      <div class="event-modal-content">
-        <h2 id="eventModalTitle"></h2>
-        <p id="eventModalDesc"></p>
-      </div>
+  <div class="event-modal">
+    <button id="closeEventModal" class="close-event-modal">×</button>
+    <img id="eventModalImg" src="" alt="">
+
+    <div class="card-actions">
+      <button class="buy-ticket-btn">Bilet Al</button>
+      <button class="copy-link-btn" id="copyLinkBtn">
+        <img src="/images/link-icon.png" alt="link">
+      </button>
+    </div>
+
+    <div class="event-modal-content">
+      <h2 id="eventModalTitle"></h2>
+      <p id="eventModalDesc"></p>
     </div>
   </div>
+</div>
 
   <script src="/script.js"></script>
   <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
