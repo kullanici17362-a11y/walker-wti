@@ -642,75 +642,89 @@ button.secondary:hover {
 }
 
 @media (max-width: 768px) {
-
-  .auth-card {
-    width: 92% !important;
-    max-width: 380px;
-    padding: 30px 20px;
-  }
-
-  .auth-card .logo {
-    width: 160px !important;
-    height: auto !important;
-    margin: 10px auto 25px !important;
-  }
-
-  .auth-card h1 {
-    font-size: 28px;
-    margin-bottom: 8px;
-  }
   .main-header {
-    height: 58px !important;
-    min-height: 58px !important;
-    padding: 0 12px !important;
+    min-height: 60px;
+    padding: 8px 12px 10px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "logo actions"
+      "search search";
+    align-items: center;
+    row-gap: 8px;
+    column-gap: 10px;
+    height: auto;
+  }
+
+  .main-header .logo {
+    grid-area: logo;
+    display: flex;
+    align-items: center;
   }
 
   .main-header .logo img {
-    height: 42px !important;
-    width: auto !important;
+    height: 52px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .auth-card {
+    width: calc(100% - 32px);
+    max-width: 420px;
+    padding: 24px;
+  }
+
+  .auth-card .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .auth-card .logo img {
+    height: 64px;
+    width: auto;
+    object-fit: contain;
+    margin: 0 auto 8px;
+  }
+
+  .header-actions {
+    grid-area: actions;
+    position: static;
+    transform: none;
+    margin-left: auto;
   }
 
   .search-box {
-    order: 3;
-    width: 100% !important;
+    grid-area: search;
+    order: unset;
+    width: 100%;
     max-width: 100%;
-    margin: 8px 0 !important;
+    margin: 0;
+    gap: 0;
   }
-  
+
   .search-box input {
-    padding: 13px 16px;
     width: 100%;
     font-size: 14px;
   }
 
-  .header-actions {
-    margin-left: auto;
-  }
-
- .main-nav {
-    padding: 10px 12px;
-    gap: 14px;
+  .main-nav {
     flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .main-nav a {
-    font-size: 13.5px;
+    gap: 12px;
+    padding: 10px 12px;
   }
 
   .hero-section {
     flex-direction: column;
-    gap: 16px;
     padding: 12px;
-
+    gap: 16px;
   }
 
   .hero-banner,
   .games-section,
   .side-cards {
     width: 100%;
-    max-width: 100% !important;
-  
+    max-width: 100%;
   }
 
   .hero-banner {
@@ -771,16 +785,5 @@ button.secondary:hover {
 
   .event-modal-content p {
     font-size: 14px;
-  }
-
-  .topbar {
-    padding: 6px 12px !important;
-    font-size: 12.5px;
-  }
-
-  .hero-banner,
-  .side-card,
-  .game-card {
-    border-radius: 14px;
   }
 }
