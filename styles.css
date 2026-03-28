@@ -237,8 +237,6 @@ button.secondary:hover {
   height: 70px;
   display: flex;
   align-items: center;
-  display: flex;
-  align-items: center;
   justify-content: space-between;
   position: relative;
   padding: 20px;
@@ -249,7 +247,6 @@ button.secondary:hover {
 
 .logo {
   font-size: 125px;
-  max-height: 100%;
   font-weight: 700;
   color: white;
   text-shadow:
@@ -325,18 +322,19 @@ button.secondary:hover {
   display: flex;
   gap: 20px;
   padding: 20px;
+  align-items: flex-start;
 }
 
 .hero-banner {
-  flex: 2;
-  padding: 30px;
+  flex: 1.8;
+  min-height: 520px;
+  padding: 20px;
   border-radius: 16px;
   background: rgba(255,255,255,0.15);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(168,85,247,.25);
   box-shadow: 0 0 25px rgba(168,85,247,.15);
-  max-width: 720px;
 }
 
 .hero-banner h2 {
@@ -355,10 +353,10 @@ button.secondary:hover {
 
 /* SIDE */
 .side-cards {
-  flex: 1;
+  width: 320px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 14px;
 }
 
 .side-card {
@@ -374,8 +372,8 @@ button.secondary:hover {
 /* ================= OYUNLAR ================= */
 
 .games-section {
-  width: 280px;
-  padding: 20px;
+  width: 260px;
+  padding: 0;
 }
 
 .section-title {
@@ -391,15 +389,17 @@ button.secondary:hover {
 }
 
 .game-card {
+  width: 100%;
+  max-width: 260px;
   background: rgba(255,255,255,0.12);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 14px;
-  max-width: 260px;
   overflow: hidden;
   border: 1px solid rgba(168,85,247,.25);
   box-shadow: 0 0 20px rgba(168,85,247,.1);
   transition: 0.25s;
+  cursor: pointer;
 }
 
 .game-card:hover {
