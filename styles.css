@@ -885,4 +885,83 @@ button.secondary:hover {
   }
 }
 
+/* ================= YENİ PROFİL DROPDOWN ================= */
+.profile-dropdown {
+  position: absolute;
+  top: 65px;
+  right: 10px;
+  width: 290px;
+  background: rgba(15, 23, 42, 0.97);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(168, 85, 247, 0.6);
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  display: none;
+  z-index: 10000;
+  color: #e9d5ff;
+  font-size: 15px;
+}
+
+.profile-dropdown.show {
+  display: block;
+}
+
+.dropdown-header {
+  font-size: 17px;
+  font-weight: 700;
+  color: #c084fc;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.dropdown-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(168, 85, 247, 0.25);
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item strong {
+  color: #d8b4fe;
+}
+
+.dropdown-divider {
+  border: none;
+  height: 1px;
+  background: rgba(168, 85, 247, 0.3);
+  margin: 15px 0;
+}
+
+.dropdown-logout-btn {
+  width: 100%;
+  padding: 14px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.dropdown-logout-btn:hover {
+  background: #dc2626;
+}
+
+/* Mobil için */
+@media (max-width: 768px) {
+  .profile-dropdown {
+    top: 70px;
+    right: 15px;
+    left: 15px;
+    width: auto;
+    max-width: 340px;
+  }
+}
+
 }

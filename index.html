@@ -69,31 +69,33 @@
     </div>
 
     <!-- PROFİL BUTONU + DROPDOWN -->
-    <div class="header-actions">
-      <button class="profile-btn" id="profileBtn" aria-label="Profil"></button>
-      
-      <!-- Dropdown Menü -->
-      <div class="profile-dropdown" id="profileDropdown">
-        <div class="dropdown-item">
-          <strong>Kullanıcı ID:</strong> 
-          <span id="userId">WALKER-78492</span>
-        </div>
-        <div class="dropdown-item">
-          <strong>Kayıt Tarihi:</strong> 
-          <span id="registerDate">28.03.2026</span>
-        </div>
-        <div class="dropdown-item">
-          <strong>Aktif Biletler:</strong> 
-          <span id="activeTickets">4</span>
-        </div>
-        
-        <hr class="dropdown-divider">
-        
-        <button class="dropdown-logout-btn" id="logoutBtn">
-          Çıkış Yap
-        </button>
-      </div>
+ <div class="header-actions">
+  <button class="profile-btn" id="profileBtn" aria-label="Profil"></button>
+  
+  <!-- YENİ DROPDOWN -->
+  <div class="profile-dropdown" id="profileDropdown">
+    <div class="dropdown-header">Profil Bilgileri</div>
+    
+    <div class="dropdown-item">
+      <strong>Kullanıcı ID:</strong>
+      <span id="userId">Yükleniyor...</span>
     </div>
+    <div class="dropdown-item">
+      <strong>Kayıt Tarihi:</strong>
+      <span id="registerDate">Yükleniyor...</span>
+    </div>
+    <div class="dropdown-item">
+      <strong>Aktif Biletler:</strong>
+      <span id="activeTickets">0</span>
+    </div>
+
+    <hr class="dropdown-divider">
+    
+    <button class="dropdown-logout-btn" id="logoutBtn">
+      Çıkış Yap
+    </button>
+  </div>
+</div>
   </header>
 
   <nav class="main-nav">

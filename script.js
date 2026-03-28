@@ -374,7 +374,7 @@ window.clearSearch = function() {
     }
 };
 
-// PROFİL DROPDOWN
+// ================= PROFİL DROPDOWN =================
 const profileBtn = document.getElementById('profileBtn');
 const profileDropdown = document.getElementById('profileDropdown');
 
@@ -384,10 +384,22 @@ if (profileBtn && profileDropdown) {
         profileDropdown.classList.toggle('show');
     });
 
-    // Dışarı tıklayınca kapat
+    // Dışarıya tıklayınca kapat
     document.addEventListener('click', function(e) {
-        if (!profileBtn.contains(e.target)) {
+        if (!profileDropdown.contains(e.target) && !profileBtn.contains(e.target)) {
             profileDropdown.classList.remove('show');
+        }
+    });
+}
+
+// Logout
+const logoutBtn = document.getElementById('logoutBtn');
+if (logoutBtn) {
+    logoutBtn.addEventListener('click', function() {
+        if (confirm("Çıkış yapmak istediğinize emin misiniz?")) {
+            localStorage.removeItem('loggedIn');
+            localStorage.removeItem('userData');
+            window.location.reload();
         }
     });
 }
