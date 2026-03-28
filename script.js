@@ -215,7 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
         modalDesc.innerHTML = `
           ${card.dataset.desc || ""}
           <br><br>
-          <strong>Not:Bilet Al butonunun aktif olması için linki 5 arkadaşınız ile paylaşmanız gerekmektedir. Şartları yerine getirip çekilişe katılmaya hak kazanan üyelerimizin çekiliş için ikinci bir bilet almaları durumunda tespit edilip hakları iptal edilecektir.</strong>
+          <strong>Not: Bilet Al butonunun aktif olması için linki 5 arkadaşınız ile paylaşmanız gerekmektedir. Şartları yerine getirip çekilişe katılmaya hak kazanan üyelerimizin çekiliş için ikinci bir bilet almaları durumunda tespit edilip hakları iptal edilecektir.</strong>
         `;
       }
 
@@ -513,4 +513,30 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   }
+
+    // ================= KAZANANLAR ŞERİDİ =================
+  const winnerTrack = document.getElementById("winnerTrack");
+
+  function generateWinnerId() {
+    const number = Math.floor(1000 + Math.random() * 9000);
+    return `XPAY-${number}`;
+  }
+
+  function setupWinnerBar() {
+    if (!winnerTrack) return;
+
+    const winnerIds = [];
+    for (let i = 0; i < 15; i++) {
+      winnerIds.push(generateWinnerId());
+    }
+
+    const singleSet = winnerIds
+      .map(id => `<span class="winner-id">${id}</span>`)
+      .join("");
+
+    // aynı seti 2 kere koyuyoruz ki akış kesilmesin
+    winnerTrack.innerHTML = singleSet + singleSet;
+  }
+
+  setupWinnerBar();
 });

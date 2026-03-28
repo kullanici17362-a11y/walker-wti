@@ -1039,3 +1039,65 @@ button.secondary:hover {
   }
 }
 
+.winner-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  background: #f3e8ff;
+  border-top: none;
+  border-bottom: none;
+  overflow: hidden;
+}
+
+.winner-label {
+  position: relative;
+  z-index: 3;
+  flex: 0 0 auto;
+  padding: 0 16px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background: #f3e8ff;
+  color: #6d28d9;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 12px 0 18px #f3e8ff;
+}
+
+.winner-marquee {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.winner-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 40px;
+  white-space: nowrap;
+  will-change: transform;
+  animation: winnerScroll 28s linear infinite;
+  color: #7c3aed;
+  font-size: 14px;
+  font-weight: 600;
+  padding-left: 100%;
+}
+
+.winner-id {
+  flex: 0 0 auto;
+  text-shadow: 0 0 8px rgba(168,85,247,.18);
+}
+
+@keyframes winnerScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
