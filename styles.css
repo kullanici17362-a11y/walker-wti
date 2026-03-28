@@ -601,37 +601,36 @@ button.secondary:hover {
 .hero-slider img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   border-radius: 16px;
+  background: #000;
 }
 
 .slider-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  
-  background: none;       /* ❌ arka plan yok */
-  border: none;           /* ❌ border yok */
-  
+  background: none;
+  border: none;
   color: white;
-  font-size: 36px;        /* 🔥 ok büyük */
+  font-size: 42px;
   cursor: pointer;
   z-index: 2;
-  
-  opacity: 0.7;
+  opacity: 0.9;
   transition: 0.2s;
+  text-shadow: 0 0 10px rgba(0,0,0,.6);
 }
 
 .slider-btn:hover {
   opacity: 1;
-  transform: translateY(-50%) scale(1.2); /* hover büyüme */
+  transform: translateY(-50%) scale(1.15);
 }
 
 .prev {
-  left: 10px;
+  left: 12px;
 }
 
 .next {
-  right: 10px;
+  right: 12px;
 }
