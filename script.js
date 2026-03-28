@@ -514,29 +514,49 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-    // ================= KAZANANLAR ŞERİDİ =================
-  const winnerTrack = document.getElementById("winnerTrack");
+   // ================= KAZANANLAR - GERÇEK SONSUZ AKIŞ =================
+const winnerTrack = document.getElementById("winnerTrack");
 
-  function generateWinnerId() {
-    const number = Math.floor(1000 + Math.random() * 9000);
-    return `XPAY-${number}`;
+function generateWinnerId() {
+  const number = Math.floor(1000 + Math.random() * 9000);
+  return `XPAY-${number}`;
+}
+
+function createWinnerElement() {
+  const span = document.createElement("span");
+  span.className = "winner-id";
+  span.textContent = generateWinnerId();
+  return span;
+}
+
+function startInfiniteWinnerScroll() {
+  if (!winnerTrack) return;
+
+  // İlk dolum (ekranı doldurana kadar)
+  for (let i = 0; i < 25; i++) {
+    winnerTrack.appendChild(createWinnerElement());
   }
 
-  function setupWinnerBar() {
-    if (!winnerTrack) return;
+  let offset = 0;
 
-    const winnerIds = [];
-    for (let i = 0; i < 15; i++) {
-      winnerIds.push(generateWinnerId());
+  function animate() {
+    offset -= 0.5; // hız (istersen 0.3 yap daha yavaş)
+
+    winnerTrack.style.transform = `translateX(${offset}px)`;
+
+    // İlk eleman tamamen çıkınca → sil ve sona yenisini ekle
+    const first = winnerTrack.firstElementChild;
+
+    if (first && first.getBoundingClientRect().right < 0) {
+      winnerTrack.appendChild(createWinnerElement());
+      winnerTrack.removeChild(first);
     }
 
-    const singleSet = winnerIds
-      .map(id => `<span class="winner-id">${id}</span>`)
-      .join("");
-
-    // aynı seti 2 kere koyuyoruz ki akış kesilmesin
-    winnerTrack.innerHTML = singleSet + singleSet;
+    requestAnimationFrame(animate);
   }
 
-  setupWinnerBar();
+  animate();
+}
+
+startInfiniteWinnerScroll();
 });

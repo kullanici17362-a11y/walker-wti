@@ -1079,12 +1079,10 @@ button.secondary:hover {
   align-items: center;
   gap: 40px;
   white-space: nowrap;
-  will-change: transform;
-  animation: winnerScroll 28s linear infinite;
-  color: #7c3aed;
+  color: #22133d;
   font-size: 14px;
   font-weight: 600;
-  padding-left: 100%;
+  will-change: transform;
 }
 
 .winner-id {
