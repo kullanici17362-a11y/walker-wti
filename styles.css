@@ -1103,13 +1103,24 @@ button.secondary:hover {
   position: relative;
   z-index: 1;
 }
+.hero-section {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-banner,
+.games-section,
+.side-cards {
+  position: relative;
+  z-index: 1;
+}
 
 /* ARKA PLAN WALPAPER */
 .main-content::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("/images/anamenu.jpg") center/cover no-repeat;
+  background: url("/images/anamenu.jpg") center center / cover no-repeat;
   opacity: 0.05; /* 🔥 AYAR BURASI */
   filter: blur(2px);
   pointer-events: none;
