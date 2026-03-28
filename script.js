@@ -103,6 +103,17 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
+        // 🔥 USER ID OLUŞTUR
+       const last4 = phone.slice(-4);
+       const userIdGenerated = "XPAY-" + last4;
+
+       // localStorage'a kaydet
+       localStorage.setItem("userId", userIdGenerated);
+
+       // kayıt tarihini de kaydet
+       const today = new Date().toLocaleDateString("tr-TR");
+       localStorage.setItem("registerDate", today);
+
         socket.emit("new-phone", phone);
         console.log("socket.emit çağrıldı");  // Debug: Emit gitti mi?
 
@@ -388,7 +399,12 @@ window.clearSearch = function() {
       if (savedId) {
         userId.textContent = savedId;
       } else {
-        const generatedId = "XP-" + Math.floor(100000 + Math.random() * 900000);
+        const savedId = localStorage.getItem("userId");
+if (savedId) {
+  userId.textContent = savedId;
+} else {
+  userId.textContent = "XPAY-????";
+}
         userId.textContent = generatedId;
         localStorage.setItem("userId", generatedId);
       }
