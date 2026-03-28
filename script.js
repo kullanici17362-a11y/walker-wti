@@ -241,4 +241,35 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
+const sliderImages = [
+  "/images/slide1.jpg",
+  "/images/slide2.jpg",
+  "/images/slide3.jpg",
+  "/images/slide4.jpg",
+  "/images/slide5.jpg"
+];
+
+let currentSlide = 0;
+
+const sliderImage = document.getElementById("sliderImage");
+const prevSlide = document.getElementById("prevSlide");
+const nextSlide = document.getElementById("nextSlide");
+
+function showSlide(index) {
+  if (!sliderImage) return;
+  sliderImage.src = sliderImages[index];
+}
+
+if (prevSlide && nextSlide && sliderImage) {
+  prevSlide.addEventListener("click", () => {
+    currentSlide = (currentSlide - 1 + sliderImages.length) % sliderImages.length;
+    showSlide(currentSlide);
+  });
+
+  nextSlide.addEventListener("click", () => {
+    currentSlide = (currentSlide + 1) % sliderImages.length;
+    showSlide(currentSlide);
+  });
+}
 });
