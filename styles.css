@@ -1129,7 +1129,7 @@ button.secondary:hover {
   position: absolute;
   inset: 0;
   background: url("/images/anamenu.jpg") center center / cover no-repeat;
-  opacity: 0.2;
+  opacity: 0.4;
   pointer-events: none;
   z-index: 0;
 }
