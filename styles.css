@@ -241,7 +241,8 @@ button.secondary:hover {
   align-items: center;
   justify-content: space-between;
   position: relative;
-  padding: 20px;
+  z-index: 40000;
+  padding:20px;
   background: linear-gradient(135deg, #a855f7, #c084fc);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(10px);
@@ -306,6 +307,8 @@ button.secondary:hover {
   background: #f3e8ff;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  position: relative;
+  z-index: 1;
 }
 
 .main-nav a {
@@ -473,7 +476,7 @@ button.secondary:hover {
   right: 20px;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 20000;
+  z-index: 50000;
 }
 
 /* ================= PROFİL DROPDOWN ================= */
@@ -492,7 +495,7 @@ button.secondary:hover {
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.8);
   padding: 18px;
-  z-index: 30000;
+  z-index: 60000;
   color: #e9d5ff;
 }
 
@@ -769,12 +772,14 @@ button.secondary:hover {
     top: auto;
     transform: none;
     margin-left: auto;
+    z-index: 50000;
   }
 
   .profile-dropdown {
     top: 54px;
     right: 0;
     width: 260px;
+    z-index: 60000;
   }
 
   .search-box {
@@ -877,53 +882,5 @@ button.secondary:hover {
   }
 }
 
-/* ================= EN SON ve EN SERT DÜZELTME ================= */
-.header-actions {
-  position: relative !important;
-}
 
-.profile-dropdown {
-  display: none !important;
-  position: absolute !important;
-  top: 68px !important;
-  right: 10px !important;
-  width: 290px !important;
-  background: rgba(15, 23, 42, 0.98) !important;
-  backdrop-filter: blur(16px) !important;
-  border: 1px solid rgba(168, 85, 247, 0.7) !important;
-  border-radius: 16px !important;
-  box-shadow: 0 25px 50px rgba(0,0,0,0.9) !important;
-  padding: 20px !important;
-  z-index: 99999 !important;
-  color: #e9d5ff !important;
-}
-
-.profile-dropdown.show {
-  display: block !important;
-}
-
-/* EN TEMİZ DROPDOWN */
-.header-actions {
-  position: relative;
-}
-
-.profile-dropdown {
-  display: none;
-  position: absolute;
-  top: 70px;
-  right: 10px;
-  width: 290px;
-  background: rgba(15, 23, 42, 0.97);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(168, 85, 247, 0.6);
-  border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-  padding: 20px;
-  z-index: 10000;
-  color: #e9d5ff;
-}
-
-.profile-dropdown.show {
-  display: block;
-}
 
