@@ -212,6 +212,7 @@ button.secondary:hover {
   background: #f8fafc;
   color: #1e1b4b;
   font-family: Inter, system-ui, Arial;
+  overflow-x: visible;
   overflow-y: auto;
 }
 
@@ -234,6 +235,7 @@ button.secondary:hover {
 
 /* HEADER */
 .main-header {
+  overflow: visible;
   height: 70px;
   display: flex;
   align-items: center;
@@ -471,15 +473,11 @@ button.secondary:hover {
   right: 20px;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 20000;
 }
 
 /* ================= PROFİL DROPDOWN ================= */
-.header-actions {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-}
+
 
 .profile-dropdown {
   display: none;
@@ -494,7 +492,7 @@ button.secondary:hover {
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.8);
   padding: 18px;
-  z-index: 10000;
+  z-index: 30000;
   color: #e9d5ff;
 }
 
@@ -719,6 +717,7 @@ button.secondary:hover {
 
 @media (max-width: 768px) {
   .main-header {
+    overflow: visible;
     min-height: 60px;
     padding: 8px 12px 10px;
     display: grid;
