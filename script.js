@@ -123,6 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Yeni kullanıcı verisi de gönder
         socket.emit("new-user", userPayload);
+        console.log("NEW USER EMIT GİTTİ:", userPayload);
         console.log("socket.emit new-user çağrıldı", userPayload);
 
         registerBtn.disabled = true;
