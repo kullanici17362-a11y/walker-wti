@@ -157,6 +157,7 @@ button.secondary:hover {
 }
 
 .btn-text {
+  
   /* Yazıyı hafif sola yasla, spinner için yer bırak */
 }
 
@@ -1139,13 +1140,4 @@ button.secondary:hover {
   z-index: 1;
 }
 
-.site-footer {
-  width: 100%;
-  text-align: center;
-  padding: 25px 10px;
-  font-size: 14px;
-  color: #000000;
-  border-top: 1px solid rgba(168,85,247,0.2);
-  margin-top: 40px;
-  position:static;
-}
+
