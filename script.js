@@ -297,8 +297,8 @@ document.addEventListener("DOMContentLoaded", () => {
 const countdownEl = document.getElementById("countdownTimer");
 const pubgCountdownEl = document.getElementById("pubgCountdownTimer");
 
-// Brawl için kalıcı 10 günlük sayaç
-const targetDate = localStorage.getItem("targetDate");
+// Brawl için sabit tarih
+const targetDate = new Date("2026-04-05T23:59:59").getTime();
 
 // PUBG için kalıcı 10 günlük sayaç
 let pubgTargetDate = localStorage.getItem("pubgTargetDate");
@@ -308,13 +308,6 @@ if (!pubgTargetDate) {
   localStorage.setItem("pubgTargetDate", pubgTargetDate);
 } else {
   pubgTargetDate = parseInt(pubgTargetDate, 10);
-}
-
-if (!targetDate) {
-  targetDate = Date.now() +  7 * 24 * 60 * 60 * 1000;
-  localStorage.setItem("targetDate", targetDate);
-} else {
-  targetDate = parseINT(targetDate, 7);
 }
 
 function formatCountdown(distance) {
