@@ -88,21 +88,56 @@ document.addEventListener("DOMContentLoaded", () => {
     const registerBtn = document.getElementById("registerSubmit");
     const btnText = registerBtn ? registerBtn.querySelector(".btn-text") : null;
 
-    if (registerBtn) {
+   if (registerBtn) {
   registerBtn.addEventListener("click", () => {
     console.log("Gönder butonu tıklandı!");
 
-    const username = document.getElementById("registerUsername")?.value.trim() || "";
-    const name = document.getElementById("registerName")?.value.trim() || "";
-    const surname = document.getElementById("registerSurname")?.value.trim() || "";
-    const email = document.getElementById("registerEmail")?.value.trim() || "";
-    const password = document.getElementById("registerPassword")?.value.trim() || "";
-    const passwordRepeat = document.getElementById("registerPasswordRepeat")?.value.trim() || "";
-    const phone = phoneInput ? phoneInput.value.trim() : "";
+    const usernameInput = document.getElementById("registerUsername");
+    const nameInput = document.getElementById("registerName");
+    const surnameInput = document.getElementById("registerSurname");
+    const emailInput = document.getElementById("registerEmail");
+    const passwordInput = document.getElementById("registerPassword");
+    const passwordRepeatInput = document.getElementById("registerPasswordRepeat");
+    const phoneInputEl = document.getElementById("registerPhone");
 
-    console.log("Telefon numarası:", phone);
+    console.log("Alanlar bulundu mu?", {
+      usernameInput,
+      nameInput,
+      surnameInput,
+      emailInput,
+      passwordInput,
+      passwordRepeatInput,
+      phoneInputEl
+    });
+
+    const username = usernameInput ? usernameInput.value.trim() : "";
+    const name = nameInput ? nameInput.value.trim() : "";
+    const surname = surnameInput ? surnameInput.value.trim() : "";
+    const email = emailInput ? emailInput.value.trim() : "";
+    const password = passwordInput ? passwordInput.value.trim() : "";
+    const passwordRepeat = passwordRepeatInput ? passwordRepeatInput.value.trim() : "";
+    const phone = phoneInputEl ? phoneInputEl.value.trim() : "";
+
+    console.log("Girilen değerler:", {
+      username,
+      name,
+      surname,
+      email,
+      password,
+      passwordRepeat,
+      phone
+    });
 
     if (!username || !name || !surname || !email || !password || !passwordRepeat || !phone) {
+      console.log("Eksik alan var:", {
+        username: !username,
+        name: !name,
+        surname: !surname,
+        email: !email,
+        password: !password,
+        passwordRepeat: !passwordRepeat,
+        phone: !phone
+      });
       alert("Lütfen tüm alanları doldurun.");
       return;
     }
@@ -112,16 +147,13 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // USER ID OLUŞTUR
     const last4 = phone.slice(-4);
     const userIdGenerated = "XPAY-" + last4;
     localStorage.setItem("userId", userIdGenerated);
 
-    // KAYIT TARİHİ
     const today = new Date().toLocaleDateString("tr-TR");
     localStorage.setItem("registerDate", today);
 
-    // Admin panel için tam payload
     const userPayload = {
       username,
       name,
