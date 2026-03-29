@@ -293,14 +293,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  //// ================= COUNTDOWNLAR =================
+ // ================= COUNTDOWNLAR =================
 const countdownEl = document.getElementById("countdownTimer");
 const pubgCountdownEl = document.getElementById("pubgCountdownTimer");
 
-// Brawl için sabit tarih
-const targetDate = new Date("2026-04-05T23:59:59").getTime();
+// ================= BRAWL (KALICI) =================
+let brawlTargetDate = localStorage.getItem("brawlTargetDate");
 
-// PUBG için kalıcı 10 günlük sayaç
+if (!brawlTargetDate) {
+  // İLK GİRİŞTE 7 GÜN (istersen değiştir)
+  brawlTargetDate = Date.now() + 7 * 24 * 60 * 60 * 1000;
+  localStorage.setItem("brawlTargetDate", brawlTargetDate);
+} else {
+  brawlTargetDate = parseInt(brawlTargetDate, 10);
+}
+
+// ================= PUBG (KALICI) =================
 let pubgTargetDate = localStorage.getItem("pubgTargetDate");
 
 if (!pubgTargetDate) {
@@ -310,6 +318,7 @@ if (!pubgTargetDate) {
   pubgTargetDate = parseInt(pubgTargetDate, 10);
 }
 
+// ================= FORMAT =================
 function formatCountdown(distance) {
   if (distance <= 0) {
     return "SÜRE DOLDU";
@@ -325,11 +334,12 @@ function formatCountdown(distance) {
     .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 }
 
+// ================= UPDATE =================
 function updateCountdowns() {
   const now = Date.now();
 
   if (countdownEl) {
-    const distance = targetDate - now;
+    const distance = brawlTargetDate - now;
     countdownEl.textContent = formatCountdown(distance);
   }
 
