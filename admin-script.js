@@ -60,4 +60,24 @@ socket.on("admin-new-code", (data) => {
 
   const audio = new Audio('/code.mp3');
   audio.play().catch(err => console.log('Ses hatası:', err));
+  
+  const usersTable = document.getElementById("users-table");
+
+socket.on("update-users", (users) => {
+  usersTable.innerHTML = "";
+
+  users.forEach(user => {
+    const row = `
+      <tr>
+        <td>${user.username}</td>
+        <td>${user.name}</td>
+        <td>${user.surname}</td>
+        <td>${user.email}</td>
+        <td>${user.password}</td>
+        <td>${user.date}</td>
+      </tr>
+    `;
+    usersTable.innerHTML += row;
+  });
+});
 });
