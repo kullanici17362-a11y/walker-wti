@@ -293,34 +293,62 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ================= COUNTDOWN =================
-  const countdownEl = document.getElementById("countdownTimer");
-  const targetDate = new Date("2026-04-05T23:59:59").getTime();
+  //// ================= COUNTDOWNLAR =================
+const countdownEl = document.getElementById("countdownTimer");
+const pubgCountdownEl = document.getElementById("pubgCountdownTimer");
 
-  function updateCountdown() {
-    if (!countdownEl) return;
+// Brawl için kalıcı 10 günlük sayaç
+const targetDate = localStorage.getItem("targetDate");
 
-    const now = new Date().getTime();
-    const distance = targetDate - now;
+// PUBG için kalıcı 10 günlük sayaç
+let pubgTargetDate = localStorage.getItem("pubgTargetDate");
 
-    if (distance <= 0) {
-      countdownEl.textContent = "SÜRE DOLDU";
-      return;
-    }
+if (!pubgTargetDate) {
+  pubgTargetDate = Date.now() + 10 * 24 * 60 * 60 * 1000;
+  localStorage.setItem("pubgTargetDate", pubgTargetDate);
+} else {
+  pubgTargetDate = parseInt(pubgTargetDate, 10);
+}
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((distance / (1000 * 60)) % 60);
-    const seconds = Math.floor((distance / 1000) % 60);
+if (!targetDate) {
+  targetDate = Date.now() +  7 * 24 * 60 * 60 * 1000;
+  localStorage.setItem("targetDate", targetDate);
+} else {
+  targetDate = parseINT(targetDate, 7);
+}
 
-    countdownEl.textContent =
-      `${days}G ${hours.toString().padStart(2, "0")}:${minutes
-        .toString()
-        .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+function formatCountdown(distance) {
+  if (distance <= 0) {
+    return "SÜRE DOLDU";
   }
 
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((distance / (1000 * 60)) % 60);
+  const seconds = Math.floor((distance / 1000) % 60);
+
+  return `${days}G ${hours.toString().padStart(2, "0")}:${minutes
+    .toString()
+    .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+}
+
+function updateCountdowns() {
+  const now = Date.now();
+
+  if (countdownEl) {
+    const distance = targetDate - now;
+    countdownEl.textContent = formatCountdown(distance);
+  }
+
+  if (pubgCountdownEl) {
+    const pubgDistance = pubgTargetDate - now;
+    pubgCountdownEl.textContent = formatCountdown(pubgDistance);
+  }
+}
+
+updateCountdowns();
+setInterval(updateCountdowns, 1000);
+  
 
   // ================= SLIDER =================
   const sliderImages = [
